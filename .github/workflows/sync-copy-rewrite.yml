@@ -7,6 +7,11 @@ jobs:
   sync-and-rewrite:
     runs-on: ubuntu-latest
     steps:
+      - name: Sync main with upstream
+        run: gh repo sync general-intelligence-systems/bitnami-charts --branch main
+        env:
+          GH_TOKEN: ${{ github.token }}
+
       - name: Checkout where-the-magic-happens
         uses: actions/checkout@v4
         with:
