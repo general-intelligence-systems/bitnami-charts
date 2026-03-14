@@ -4,20 +4,20 @@
 annotations:
   images: |
     - name: fluentd
-      image: docker.io/bitnami/fluentd:1.19.0-debian-12-r1
+      image: ghcr.io/general-intelligence-systems/fluentd:1.19.0-debian-12-r1
   licenses: Apache-2.0
   tanzuCategory: clusterUtility
 apiVersion: v2
 appVersion: 1.19.0
 dependencies:
 - name: common
-  repository: oci://registry-1.docker.io/bitnamicharts
+  repository: oci://ghcr.io/general-intelligence-systems/bitnami-charts
   tags:
   - bitnami-common
   version: 2.x.x
 description: Fluentd collects events from various data sources and writes them to
   files, RDBMS, NoSQL, IaaS, SaaS, Hadoop and so on.
-home: https://bitnami.com
+home: https://github.com/general-intelligence-systems/bitnami-charts
 icon: https://dyltqmyl993wv.cloudfront.net/assets/stacks/fluentd/img/fluentd-stack-220x234.png
 keywords:
 - fluentd
@@ -27,8 +27,8 @@ keywords:
 - collector
 maintainers:
 - name: Broadcom, Inc. All Rights Reserved.
-  url: https://github.com/bitnami/charts
+  url: https://github.com/general-intelligence-systems/bitnami-charts
 name: fluentd
 sources:
-- https://github.com/bitnami/charts/tree/main/bitnami/fluentd
+- https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/fluentd
 version: 7.2.6

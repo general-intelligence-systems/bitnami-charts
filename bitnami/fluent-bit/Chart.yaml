@@ -4,21 +4,21 @@
 annotations:
   images: |
     - name: fluent-bit
-      image: docker.io/bitnami/fluent-bit:4.0.8-debian-12-r0
+      image: ghcr.io/general-intelligence-systems/fluent-bit:4.0.8-debian-12-r0
   licenses: Apache-2.0
   tanzuCategory: clusterUtility
 apiVersion: v2
 appVersion: 4.0.8
 dependencies:
 - name: common
-  repository: oci://registry-1.docker.io/bitnamicharts
+  repository: oci://ghcr.io/general-intelligence-systems/bitnami-charts
   tags:
   - bitnami-common
   version: 2.x.x
 description: Fluent Bit is a Fast and Lightweight Log Processor and Forwarder. It
   has been made with a strong focus on performance to allow the collection of events
   from different sources without complexity.
-home: https://bitnami.com
+home: https://github.com/general-intelligence-systems/bitnami-charts
 icon: https://dyltqmyl993wv.cloudfront.net/assets/stacks/fluent-bit/img/fluent-bit-stack-220x234.png
 keywords:
 - fluent-bit
@@ -26,8 +26,8 @@ keywords:
 - monitoring
 maintainers:
 - name: Broadcom, Inc. All Rights Reserved.
-  url: https://github.com/bitnami/charts
+  url: https://github.com/general-intelligence-systems/bitnami-charts
 name: fluent-bit
 sources:
-- https://github.com/bitnami/charts/tree/main/bitnami/fluent-bit
+- https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/fluent-bit
 version: 3.1.14

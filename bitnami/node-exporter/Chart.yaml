@@ -4,20 +4,20 @@
 annotations:
   images: |
     - name: node-exporter
-      image: docker.io/bitnami/node-exporter:1.9.1-debian-12-r14
+      image: ghcr.io/general-intelligence-systems/node-exporter:1.9.1-debian-12-r14
   licenses: Apache-2.0
   tanzuCategory: clusterUtility
 apiVersion: v2
 appVersion: 1.9.1
 dependencies:
 - name: common
-  repository: oci://registry-1.docker.io/bitnamicharts
+  repository: oci://ghcr.io/general-intelligence-systems/bitnami-charts
   tags:
   - bitnami-common
   version: 2.x.x
 description: Prometheus exporter for hardware and OS metrics exposed by UNIX kernels,
   with pluggable metric collectors.
-home: https://bitnami.com
+home: https://github.com/general-intelligence-systems/bitnami-charts
 icon: https://dyltqmyl993wv.cloudfront.net/assets/stacks/node-exporter/img/node-exporter-stack-220x234.png
 keywords:
 - prometheus
@@ -25,8 +25,8 @@ keywords:
 - monitoring
 maintainers:
 - name: Broadcom, Inc. All Rights Reserved.
-  url: https://github.com/bitnami/charts
+  url: https://github.com/general-intelligence-systems/bitnami-charts
 name: node-exporter
 sources:
-- https://github.com/bitnami/charts/tree/main/bitnami/node-exporter
+- https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/node-exporter
 version: 4.5.20
