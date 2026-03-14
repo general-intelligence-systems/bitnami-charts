@@ -13,11 +13,14 @@ jobs:
           ref: where-the-magic-happens
           fetch-depth: 0
 
+      - name: Fetch main branch
+        run: git fetch origin main
+
       - name: Delete existing bitnami folder
         run: rm -rf bitnami
 
       - name: Copy bitnami folder from main
-        run: git checkout main -- bitnami
+        run: git checkout origin/main -- bitnami
 
       - name: Replace registry and image prefix
         run: |
