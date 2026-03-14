@@ -4,20 +4,20 @@
 annotations:
   images: |
     - name: alertmanager
-      image: docker.io/bitnami/alertmanager:0.28.1-debian-12-r15
+      image: ghcr.io/general-intelligence-systems/alertmanager:0.28.1-debian-12-r15
     - name: os-shell
-      image: docker.io/bitnami/os-shell:12-debian-12-r50
+      image: ghcr.io/general-intelligence-systems/os-shell:12-debian-12-r50
     - name: prometheus
-      image: docker.io/bitnami/prometheus:3.5.0-debian-12-r3
+      image: ghcr.io/general-intelligence-systems/prometheus:3.5.0-debian-12-r3
     - name: thanos
-      image: docker.io/bitnami/thanos:0.39.2-debian-12-r2
+      image: ghcr.io/general-intelligence-systems/thanos:0.39.2-debian-12-r2
   licenses: Apache-2.0
   tanzuCategory: clusterUtility
 apiVersion: v2
 appVersion: 3.5.0
 dependencies:
 - name: common
-  repository: oci://registry-1.docker.io/bitnamicharts
+  repository: oci://ghcr.io/general-intelligence-systems/bitnami-charts
   tags:
   - bitnami-common
   version: 2.x.x
@@ -31,10 +31,10 @@ keywords:
 - monitoring
 maintainers:
 - name: Bitnami
-  url: https://github.com/bitnami/charts
+  url: https://github.com/general-intelligence-systems/bitnami-charts
 name: prometheus
 sources:
-- https://github.com/bitnami/charts/tree/main/bitnami/prometheus
+- https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/prometheus
 - https://github.com/bitnami/containers/tree/main/bitnami/prometheus
 - https://github.com/prometheus/prometheus
 - https://github.com/prometheus-community/helm-charts

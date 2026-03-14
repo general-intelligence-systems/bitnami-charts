@@ -4,7 +4,7 @@
 annotations:
   images: |
     - name: odoo
-      image: docker.io/bitnami/odoo:18.0.20250805-debian-12-r8
+      image: ghcr.io/general-intelligence-systems/odoo:18.0.20250805-debian-12-r8
   licenses: Apache-2.0
   tanzuCategory: application
 apiVersion: v2
@@ -12,17 +12,17 @@ appVersion: 18.0.20250805
 dependencies:
 - condition: postgresql.enabled
   name: postgresql
-  repository: oci://registry-1.docker.io/bitnamicharts
+  repository: oci://ghcr.io/general-intelligence-systems/bitnami-charts
   version: 16.x.x
 - name: common
-  repository: oci://registry-1.docker.io/bitnamicharts
+  repository: oci://ghcr.io/general-intelligence-systems/bitnami-charts
   tags:
   - bitnami-common
   version: 2.x.x
 description: Odoo is an open source ERP and CRM platform, formerly known as OpenERP,
   that can connect a wide variety of business operations such as sales, supply chain,
   finance, and project management.
-home: https://bitnami.com
+home: https://github.com/general-intelligence-systems/bitnami-charts
 icon: https://dyltqmyl993wv.cloudfront.net/assets/stacks/odoo/img/odoo-stack-220x234.png
 keywords:
 - odoo
@@ -32,8 +32,8 @@ keywords:
 - web
 maintainers:
 - name: Broadcom, Inc. All Rights Reserved.
-  url: https://github.com/bitnami/charts
+  url: https://github.com/general-intelligence-systems/bitnami-charts
 name: odoo
 sources:
-- https://github.com/bitnami/charts/tree/main/bitnami/odoo
+- https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/odoo
 version: 28.2.11

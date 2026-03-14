@@ -4,20 +4,20 @@
 annotations:
   images: |
     - name: cadvisor
-      image: docker.io/bitnami/cadvisor:0.53.0-debian-12-r9
+      image: ghcr.io/general-intelligence-systems/cadvisor:0.53.0-debian-12-r9
   licenses: Apache-2.0
   tanzuCategory: clusterUtility
 apiVersion: v2
 appVersion: 0.53.0
 dependencies:
 - name: common
-  repository: oci://registry-1.docker.io/bitnamicharts
+  repository: oci://ghcr.io/general-intelligence-systems/bitnami-charts
   tags:
   - bitnami-common
   version: 2.x.x
 description: cAdvisor (Container Advisor) is an open-source tool by Google for monitoring
   containers, collecting metrics like CPU, memory, and network usage.
-home: https://bitnami.com
+home: https://github.com/general-intelligence-systems/bitnami-charts
 icon: https://dyltqmyl993wv.cloudfront.net/assets/stacks/cadvisor/img/cadvisor-stack-220x234.png
 keywords:
 - cadvisor
@@ -25,8 +25,8 @@ keywords:
 - kubernetes
 maintainers:
 - name: Broadcom, Inc. All Rights Reserved.
-  url: https://github.com/bitnami/charts
+  url: https://github.com/general-intelligence-systems/bitnami-charts
 name: cadvisor
 sources:
-- https://github.com/bitnami/charts/tree/main/bitnami/cadvisor
+- https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/cadvisor
 version: 0.1.14

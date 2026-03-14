@@ -4,22 +4,22 @@
 annotations:
   images: |
     - name: nginx
-      image: docker.io/bitnami/nginx:1.29.1-debian-12-r0
+      image: ghcr.io/general-intelligence-systems/nginx:1.29.1-debian-12-r0
     - name: nginx-ingress-controller
-      image: docker.io/bitnami/nginx-ingress-controller:1.13.1-debian-12-r1
+      image: ghcr.io/general-intelligence-systems/nginx-ingress-controller:1.13.1-debian-12-r1
   licenses: Apache-2.0
   tanzuCategory: clusterUtility
 apiVersion: v2
 appVersion: 1.13.1
 dependencies:
 - name: common
-  repository: oci://registry-1.docker.io/bitnamicharts
+  repository: oci://ghcr.io/general-intelligence-systems/bitnami-charts
   tags:
   - bitnami-common
   version: 2.x.x
 description: NGINX Ingress Controller is an Ingress controller that manages external
   access to HTTP services in a Kubernetes cluster using NGINX.
-home: https://bitnami.com
+home: https://github.com/general-intelligence-systems/bitnami-charts
 icon: https://dyltqmyl993wv.cloudfront.net/assets/stacks/nginx-ingress-controller/img/nginx-ingress-controller-stack-220x234.png
 keywords:
 - ingress
@@ -31,8 +31,8 @@ keywords:
 kubeVersion: '>= 1.20.0-0'
 maintainers:
 - name: Broadcom, Inc. All Rights Reserved.
-  url: https://github.com/bitnami/charts
+  url: https://github.com/general-intelligence-systems/bitnami-charts
 name: nginx-ingress-controller
 sources:
-- https://github.com/bitnami/charts/tree/main/bitnami/nginx-ingress-controller
+- https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/nginx-ingress-controller
 version: 12.0.8

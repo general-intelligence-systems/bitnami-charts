@@ -7,7 +7,7 @@ apiVersion: v2
 # Please make sure that version and appVersion are always the same.
 appVersion: 2.31.7
 description: A Library Helm Chart for grouping common logic between bitnami charts. This chart is not deployable by itself.
-home: https://bitnami.com
+home: https://github.com/general-intelligence-systems/bitnami-charts
 icon: https://dyltqmyl993wv.cloudfront.net/downloads/logos/bitnami-mark.png
 keywords:
   - common
@@ -17,9 +17,9 @@ keywords:
   - bitnami
 maintainers:
   - name: Broadcom, Inc. All Rights Reserved.
-    url: https://github.com/bitnami/charts
+    url: https://github.com/general-intelligence-systems/bitnami-charts
 name: common
 sources:
-  - https://github.com/bitnami/charts/tree/main/bitnami/common
+  - https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/common
 type: library
 version: 2.31.8

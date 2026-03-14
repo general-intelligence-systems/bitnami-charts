@@ -4,22 +4,22 @@
 annotations:
   images: |
     - name: grafana
-      image: docker.io/bitnami/grafana:12.1.1-debian-12-r1
+      image: ghcr.io/general-intelligence-systems/grafana:12.1.1-debian-12-r1
     - name: grafana-operator
-      image: docker.io/bitnami/grafana-operator:5.19.4-debian-12-r2
+      image: ghcr.io/general-intelligence-systems/grafana-operator:5.19.4-debian-12-r2
   licenses: Apache-2.0
   tanzuCategory: application
 apiVersion: v2
 appVersion: 5.19.4
 dependencies:
 - name: common
-  repository: oci://registry-1.docker.io/bitnamicharts
+  repository: oci://ghcr.io/general-intelligence-systems/bitnami-charts
   tags:
   - bitnami-common
   version: 2.x.x
 description: Grafana Operator is a Kubernetes operator that enables the installation
   and management of Grafana instances, dashboards and plugins.
-home: https://bitnami.com
+home: https://github.com/general-intelligence-systems/bitnami-charts
 icon: https://dyltqmyl993wv.cloudfront.net/assets/stacks/grafana/img/grafana-stack-220x234.png
 keywords:
 - grafana
@@ -27,8 +27,8 @@ keywords:
 - monitoring
 maintainers:
 - name: Broadcom, Inc. All Rights Reserved.
-  url: https://github.com/bitnami/charts
+  url: https://github.com/general-intelligence-systems/bitnami-charts
 name: grafana-operator
 sources:
-- https://github.com/bitnami/charts/tree/main/bitnami/grafana-operator
+- https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/grafana-operator
 version: 4.10.0
