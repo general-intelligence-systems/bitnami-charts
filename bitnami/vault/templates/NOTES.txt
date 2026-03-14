@@ -4,7 +4,7 @@ APP VERSION: {{ .Chart.AppVersion }}
 
 ⚠ WARNING: Since August 28th, 2025, only a limited subset of images/charts are available for free.
     Subscribe to Bitnami Secure Images to receive continued support and security updates.
-    More info at https://bitnami.com and https://github.com/bitnami/containers/issues/83267
+    More info at https://github.com/general-intelligence-systems/bitnami-charts and https://github.com/bitnami/containers/issues/83267
 
 ** Please be patient while the chart is being deployed **
 
@@ -53,7 +53,7 @@ Read the upstream vault documentation for unsealing and initializing the instanc
 WARNING: HA setup isn't currently supported and running multiple Vault Server replicas could result on running independent standalone servers, unless a backend storage (such as DynamoDB) is used via custom configuration.
 Find more information in the issue below:
 
-  https://github.com/bitnami/charts/issues/32373
+  https://github.com/general-intelligence-systems/bitnami-charts/issues/32373
 {{- end }}
 
 {{- include "common.warnings.rollingTag" .Values.server.image }}

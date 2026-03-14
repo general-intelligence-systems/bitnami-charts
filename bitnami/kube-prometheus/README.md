@@ -11,7 +11,7 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/kube-prometheus
+helm install my-release oci://ghcr.io/general-intelligence-systems/bitnami-charts/kube-prometheus
 ```
 
 > Tip: Did you know that this app is also available as a Kubernetes App on the Azure Marketplace? Kubernetes Apps are the easiest way to deploy Bitnami on AKS. Click [here](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.prometheus-operator-cnab) to see the listing on Azure Marketplace.
@@ -26,7 +26,7 @@ Those are hardened, minimal CVE images built and maintained by Bitnami. Bitnami 
 - Software supply chain provenance attestation through in-toto
 - First class support for the internet’s favorite Helm charts
 
-Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://bitnami.com/).
+Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://github.com/general-intelligence-systems/bitnami-charts/).
 
 ![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%201.png?raw=true "Application details")
 ![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%202.png?raw=true "Packaging report")
@@ -72,7 +72,7 @@ The command deploys kube-prometheus on the Kubernetes cluster in the default con
 
 Bitnami charts allow setting resource requests and limits for all containers inside the chart deployment. These are inside the `resources` value (check parameter table). Setting requests is essential for production workloads and these should be adapted to your specific use case.
 
-To make this process easier, the chart contains the `resourcesPreset` values, which automatically sets the `resources` section according to different presets. Check these presets in [the bitnami/common chart](https://github.com/bitnami/charts/blob/main/bitnami/common/templates/_resources.tpl#L15). However, in production workloads using `resourcesPreset` is discouraged as it may not fully adapt to your specific needs. Find more information on container resource management in the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/).
+To make this process easier, the chart contains the `resourcesPreset` values, which automatically sets the `resources` section according to different presets. Check these presets in [the bitnami/common chart](https://github.com/general-intelligence-systems/bitnami-charts/blob/main/bitnami/common/templates/_resources.tpl#L15). However, in production workloads using `resourcesPreset` is discouraged as it may not fully adapt to your specific needs. Find more information on container resource management in the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/).
 
 ### [Rolling vs Immutable tags](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-understand-rolling-tags-containers-index.html)
 
@@ -134,7 +134,7 @@ To back up and restore Helm chart deployments on Kubernetes, you need to back up
 
 This chart allows setting custom Pod affinity using the `XXX.affinity` parameter(s). Find more information about Pod's affinity in the [Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity).
 
-As an alternative, use one of the preset configurations for pod affinity, pod anti-affinity, and node affinity available at the [bitnami/common](https://github.com/bitnami/charts/tree/main/bitnami/common#affinities) chart. To do so, set the `XXX.podAffinityPreset`, `XXX.podAntiAffinityPreset`, or `XXX.nodeAffinityPreset` parameters.
+As an alternative, use one of the preset configurations for pod affinity, pod anti-affinity, and node affinity available at the [bitnami/common](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/common#affinities) chart. To do so, set the `XXX.podAffinityPreset`, `XXX.podAntiAffinityPreset`, or `XXX.nodeAffinityPreset` parameters.
 
 ## Parameters
 
@@ -1072,7 +1072,7 @@ helm install my-release -f values.yaml oci://REGISTRY_NAME/REPOSITORY_NAME/kube-
 ```
 
 > Note: You need to substitute the placeholders `REGISTRY_NAME` and `REPOSITORY_NAME` with a reference to your Helm chart registry and repository. For example, in the case of Bitnami, you need to use `REGISTRY_NAME=registry-1.docker.io` and `REPOSITORY_NAME=bitnamicharts`.
-> **Tip**: You can use the default [values.yaml](https://github.com/bitnami/charts/tree/main/bitnami/kube-prometheus/values.yaml)
+> **Tip**: You can use the default [values.yaml](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/kube-prometheus/values.yaml)
 
 ## Troubleshooting
 
@@ -1084,11 +1084,11 @@ While upgrading a chart, please note that there are certain limitations to upgra
 
 ### To 11.0.0
 
-This major updates the kube-state-metrics subchart to its newest major, 5.0.0. For more information, please refer to [kube-state-metrics upgrade notes](https://github.com/bitnami/charts/tree/main/bitnami/kube-state-metrics#to-500).
+This major updates the kube-state-metrics subchart to its newest major, 5.0.0. For more information, please refer to [kube-state-metrics upgrade notes](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/kube-state-metrics#to-500).
 
 ### To 10.2.0
 
-This version introduces image verification for security purposes. To disable it, set `global.security.allowInsecureImages` to `true`. More details at [GitHub issue](https://github.com/bitnami/charts/issues/30850).
+This version introduces image verification for security purposes. To disable it, set `global.security.allowInsecureImages` to `true`. More details at [GitHub issue](https://github.com/general-intelligence-systems/bitnami-charts/issues/30850).
 
 ```console
 helm upgrade my-release oci://REGISTRY_NAME/REPOSITORY_NAME/kube-prometheus
@@ -1098,7 +1098,7 @@ helm upgrade my-release oci://REGISTRY_NAME/REPOSITORY_NAME/kube-prometheus
 
 ### To 10.0.0
 
-This major bump moves the crds to a local subchart called `kube-prometheus-crds`. This avoids an [installation issue](https://github.com/bitnami/charts/issues/29876) due to the size of the release secret created by helm. No issues are expected during upgrades.
+This major bump moves the crds to a local subchart called `kube-prometheus-crds`. This avoids an [installation issue](https://github.com/general-intelligence-systems/bitnami-charts/issues/29876) due to the size of the release secret created by helm. No issues are expected during upgrades.
 
 ### To 9.0.0
 
@@ -1113,7 +1113,7 @@ This could potentially break any customization or init scripts used in your depl
 
 ### To 8.0.0
 
-This major updates the kube-state-metrics subchart to its newest major, 3.0.0, and the node-exporter subchart to its newest major, 3.0.0. Both releases contains name changes to a few of its values. For more information, please refer to [kube-state-metrics upgrade notes](https://github.com/bitnami/charts/tree/main/bitnami/kube-state-metrics#to-300) and [node-exporter upgrade notes](https://github.com/bitnami/charts/tree/main/bitnami/node-exporter#to-300).
+This major updates the kube-state-metrics subchart to its newest major, 3.0.0, and the node-exporter subchart to its newest major, 3.0.0. Both releases contains name changes to a few of its values. For more information, please refer to [kube-state-metrics upgrade notes](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/kube-state-metrics#to-300) and [node-exporter upgrade notes](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/node-exporter#to-300).
 
 ### To 7.0.0
 
@@ -1181,7 +1181,7 @@ If you use [Strategic Merge Patch](https://github.com/prometheus-operator/promet
 
 ### To 5.0.0
 
-This major updates the kube-state-metrics subchart to it newest major, 2.0.0, which contains name changes to a few of its values. For more information on this subchart's major, please refer to [kube-state-metrics upgrade notes](https://github.com/bitnami/charts/tree/main/bitnami/kube-state-metrics#to-200).
+This major updates the kube-state-metrics subchart to it newest major, 2.0.0, which contains name changes to a few of its values. For more information on this subchart's major, please refer to [kube-state-metrics upgrade notes](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/kube-state-metrics#to-200).
 
 ### To 4.4.0
 
@@ -1242,9 +1242,9 @@ helm upgrade my-release --set prometheus.thanos.create=true oci://REGISTRY_NAME/
 
 ### To 1.0.0
 
-- The chart was renamed to `kube-prometheus` to be more accurate with the actual capabilities of the chart: it does not just deploy the Prometheus operator, it deploys an entire cluster monitoring stack, that includes other components (e.g. NodeExporter or Kube State metrics). Find more information about the reasons behind this decision at [#3490](https://github.com/bitnami/charts/issues/3490).
+- The chart was renamed to `kube-prometheus` to be more accurate with the actual capabilities of the chart: it does not just deploy the Prometheus operator, it deploys an entire cluster monitoring stack, that includes other components (e.g. NodeExporter or Kube State metrics). Find more information about the reasons behind this decision at [#3490](https://github.com/general-intelligence-systems/bitnami-charts/issues/3490).
 - New CRDs were added and some existing ones were updated.
-- This version also introduces `bitnami/common`, a [library chart](https://helm.sh/docs/topics/library_charts/#helm) as a dependency. More documentation about this new utility could be found [here](https://github.com/bitnami/charts/tree/main/bitnami/common#bitnami-common-library-chart). Please, make sure that you have updated the chart dependencies before executing any upgrade.
+- This version also introduces `bitnami/common`, a [library chart](https://helm.sh/docs/topics/library_charts/#helm) as a dependency. More documentation about this new utility could be found [here](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/common#bitnami-common-library-chart). Please, make sure that you have updated the chart dependencies before executing any upgrade.
 
 > Note: There is no backwards compatibility due to the above mentioned changes. It's necessary to install a new release of the chart, and migrate the existing TSDB data to the new Prometheus instances.
 

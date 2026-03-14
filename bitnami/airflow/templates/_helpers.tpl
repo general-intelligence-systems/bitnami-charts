@@ -544,7 +544,7 @@ airflow: metrics
 {{/*
 In Airflow version 2.1.0, the CeleryKubernetesExecutor requires setting workers with CeleryExecutor in order to work properly.
 This is a workaround and is subject to Airflow official resolution.
-Ref: https://github.com/bitnami/charts/pull/6096#issuecomment-856499047
+Ref: https://github.com/general-intelligence-systems/bitnami-charts/pull/6096#issuecomment-856499047
 */}}
 {{- define "airflow.worker.executor" -}}
 {{- print (ternary "CeleryExecutor" .Values.executor (eq .Values.executor "CeleryKubernetesExecutor")) -}}

@@ -174,7 +174,7 @@ search_base_dns = [{{ (required "You must set ldap.basedn" .Values.ldap.basedn) 
 Validate values for Grafana.
 */}}
 {{- define "grafana.validateValues" -}}
-# Note: Do not include grafana.validateValues.database here. See https://github.com/bitnami/charts/issues/20629
+# Note: Do not include grafana.validateValues.database here. See https://github.com/general-intelligence-systems/bitnami-charts/issues/20629
 {{- $messages := list -}}
 {{- $messages := append $messages (include "grafana.validateValues.configmapsOrSecrets" .) -}}
 {{- $messages := append $messages (include "grafana.validateValues.ldap.configuration" .) -}}

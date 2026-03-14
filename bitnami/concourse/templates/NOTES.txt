@@ -4,7 +4,7 @@ APP VERSION: {{ .Chart.AppVersion }}
 
 ⚠ WARNING: Since August 28th, 2025, only a limited subset of images/charts are available for free.
     Subscribe to Bitnami Secure Images to receive continued support and security updates.
-    More info at https://bitnami.com and https://github.com/bitnami/containers/issues/83267
+    More info at https://github.com/general-intelligence-systems/bitnami-charts and https://github.com/bitnami/containers/issues/83267
 
 {{- $releaseNamespace := .Release.Namespace }}
 {{- $clusterDomain := .Values.clusterDomain }}
@@ -61,7 +61,7 @@ host. To configure Concourse with the URL of your service:
     {{- if and .Values.secrets.localAuth.enabled }}
     {{ include "common.utils.secret.getvalue" (dict "secret" $concourseWebSecretName "field" "local_users" "context" $) }}
     {{- end }}
-    helm upgrade --namespace {{ $releaseNamespace }} {{ .Release.Name }} oci://registry-1.docker.io/bitnamicharts/{{ .Chart.Name }} \
+    helm upgrade --namespace {{ $releaseNamespace }} {{ .Release.Name }} oci://ghcr.io/general-intelligence-systems/bitnami-charts/{{ .Chart.Name }} \
       {{- if and .Values.secrets.localAuth.enabled }}
       --set secrets.localUsers=$LOCAL_USERS \
       {{- end }}
@@ -76,7 +76,7 @@ host. To configure Concourse with the URL of your service:
   {{- else }}
 
     ## PLEASE UPDATE THE EXTERNAL DATABASE CONNECTION PARAMETERS IN THE FOLLOWING COMMAND AS NEEDED ##
-    helm upgrade --namespace {{ $releaseNamespace }} {{ .Release.Name }} oci://registry-1.docker.io/bitnamicharts/{{ .Chart.Name }} \
+    helm upgrade --namespace {{ $releaseNamespace }} {{ .Release.Name }} oci://ghcr.io/general-intelligence-systems/bitnami-charts/{{ .Chart.Name }} \
       {{- if and .Values.secrets.localAuth.enabled }}
       --set secrets.localUsers=$LOCAL_USERS \
       {{- end }}

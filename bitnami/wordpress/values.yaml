@@ -393,7 +393,7 @@ tolerations: []
 ## WordPress containers' resource requests and limits
 ## ref: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
 ## @param resourcesPreset Set container resources according to one common preset (allowed values: none, nano, micro, small, medium, large, xlarge, 2xlarge). This is ignored if resources is set (resources is recommended for production).
-## More information: https://github.com/bitnami/charts/blob/main/bitnami/common/templates/_resources.tpl#L15
+## More information: https://github.com/general-intelligence-systems/bitnami-charts/blob/main/bitnami/common/templates/_resources.tpl#L15
 ##
 resourcesPreset: "micro"
 ## @param resources Set container requests and limits for different resources like CPU or memory (essential for production workloads)
@@ -910,7 +910,7 @@ volumePermissions:
   ## Init container's resource requests and limits
   ## ref: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
   ## @param volumePermissions.resourcesPreset Set container resources according to one common preset (allowed values: none, nano, micro, small, medium, large, xlarge, 2xlarge). This is ignored if volumePermissions.resources is set (volumePermissions.resources is recommended for production).
-  ## More information: https://github.com/bitnami/charts/blob/main/bitnami/common/templates/_resources.tpl#L15
+  ## More information: https://github.com/general-intelligence-systems/bitnami-charts/blob/main/bitnami/common/templates/_resources.tpl#L15
   ##
   resourcesPreset: "nano"
   ## @param volumePermissions.resources Set container requests and limits for different resources like CPU or memory (essential for production workloads)
@@ -1070,7 +1070,7 @@ metrics:
   ## Prometheus exporter container's resource requests and limits
   ## ref: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
   ## @param metrics.resourcesPreset Set container resources according to one common preset (allowed values: none, nano, micro, small, medium, large, xlarge, 2xlarge). This is ignored if metrics.resources is set (metrics.resources is recommended for production).
-  ## More information: https://github.com/bitnami/charts/blob/main/bitnami/common/templates/_resources.tpl#L15
+  ## More information: https://github.com/general-intelligence-systems/bitnami-charts/blob/main/bitnami/common/templates/_resources.tpl#L15
   ##
   resourcesPreset: "nano"
   ## @param metrics.resources Set container requests and limits for different resources like CPU or memory (essential for production workloads)
@@ -1143,7 +1143,7 @@ metrics:
     ##
     labels: {}
     ## @param metrics.serviceMonitor.selector Prometheus instance selector labels
-    ## ref: https://github.com/bitnami/charts/tree/main/bitnami/prometheus-operator#prometheus-configuration
+    ## ref: https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/prometheus-operator#prometheus-configuration
     ##
     selector: {}
     ## @param metrics.serviceMonitor.relabelings RelabelConfigs to apply to samples before scraping
@@ -1221,7 +1221,7 @@ networkPolicy:
 ##
 
 ## MariaDB chart configuration
-## ref: https://github.com/bitnami/charts/blob/main/bitnami/mariadb/values.yaml
+## ref: https://github.com/general-intelligence-systems/bitnami-charts/blob/main/bitnami/mariadb/values.yaml
 ##
 mariadb:
   ## @param mariadb.enabled Deploy a MariaDB server to satisfy the applications database requirements
@@ -1268,7 +1268,7 @@ mariadb:
     ## resources, such as Minikube. If you do want to specify resources, uncomment the following
     ## lines, adjust them as necessary, and remove the curly braces after 'resources:'.
     ## @param mariadb.primary.resourcesPreset Set container resources according to one common preset (allowed values: none, nano, small, medium, large, xlarge, 2xlarge). This is ignored if primary.resources is set (primary.resources is recommended for production).
-    ## More information: https://github.com/bitnami/charts/blob/main/bitnami/common/templates/_resources.tpl#L15
+    ## More information: https://github.com/general-intelligence-systems/bitnami-charts/blob/main/bitnami/common/templates/_resources.tpl#L15
     ##
     resourcesPreset: "micro"
     ## @param mariadb.primary.resources Set container requests and limits for different resources like CPU or memory (essential for production workloads)
@@ -1307,7 +1307,7 @@ externalDatabase:
   ##
   existingSecret: ""
 ## Memcached chart configuration
-## ref: https://github.com/bitnami/charts/blob/main/bitnami/memcached/values.yaml
+## ref: https://github.com/general-intelligence-systems/bitnami-charts/blob/main/bitnami/memcached/values.yaml
 ##
 memcached:
   ## @param memcached.enabled Deploy a Memcached server for caching database queries
@@ -1338,7 +1338,7 @@ memcached:
   ## Memcached resource requests and limits
   ## ref: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
   ## @param memcached.resourcesPreset Set container resources according to one common preset (allowed values: none, nano, small, medium, large, xlarge, 2xlarge). This is ignored if resources is set (resources is recommended for production).
-  ## More information: https://github.com/bitnami/charts/blob/main/bitnami/common/templates/_resources.tpl#L15
+  ## More information: https://github.com/general-intelligence-systems/bitnami-charts/blob/main/bitnami/common/templates/_resources.tpl#L15
   ##
   resourcesPreset: "nano"
   ## @param memcached.resources Set container requests and limits for different resources like CPU or memory (essential for production workloads)

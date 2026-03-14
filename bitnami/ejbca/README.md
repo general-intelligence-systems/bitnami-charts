@@ -11,7 +11,7 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/ejbca
+helm install my-release oci://ghcr.io/general-intelligence-systems/bitnami-charts/ejbca
 ```
 
 ## Why use Bitnami Secure Images?
@@ -24,7 +24,7 @@ Those are hardened, minimal CVE images built and maintained by Bitnami. Bitnami 
 - Software supply chain provenance attestation through in-toto
 - First class support for the internet’s favorite Helm charts
 
-Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://bitnami.com/).
+Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://github.com/general-intelligence-systems/bitnami-charts/).
 
 ![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%201.png?raw=true "Application details")
 ![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%202.png?raw=true "Packaging report")
@@ -35,7 +35,7 @@ If you are looking for our previous generation of images based on Debian Linux, 
 
 This chart bootstraps a [EJBCA](https://www.ejbca.org/) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
-It also packages [Bitnami MariaDB](https://github.com/bitnami/charts/tree/main/bitnami/mariadb) as the required databases for the EJBCA application.
+It also packages [Bitnami MariaDB](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/mariadb) as the required databases for the EJBCA application.
 
 ## Prerequisites
 
@@ -63,7 +63,7 @@ The command deploys EJBCA on the Kubernetes cluster in the default configuration
 
 Bitnami charts allow setting resource requests and limits for all containers inside the chart deployment. These are inside the `resources` value (check parameter table). Setting requests is essential for production workloads and these should be adapted to your specific use case.
 
-To make this process easier, the chart contains the `resourcesPreset` values, which automatically sets the `resources` section according to different presets. Check these presets in [the bitnami/common chart](https://github.com/bitnami/charts/blob/main/bitnami/common/templates/_resources.tpl#L15). However, in production workloads using `resourcesPreset` is discouraged as it may not fully adapt to your specific needs. Find more information on container resource management in the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/).
+To make this process easier, the chart contains the `resourcesPreset` values, which automatically sets the `resources` section according to different presets. Check these presets in [the bitnami/common chart](https://github.com/general-intelligence-systems/bitnami-charts/blob/main/bitnami/common/templates/_resources.tpl#L15). However, in production workloads using `resourcesPreset` is discouraged as it may not fully adapt to your specific needs. Find more information on container resource management in the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/).
 
 ### [Rolling vs Immutable tags](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-understand-rolling-tags-containers-index.html)
 
@@ -92,7 +92,7 @@ By default, this chart only deploys a single pod running EJBCA. To increase the 
 
 For example, for a release using `secretPassword` and `dbPassword` to scale up to a total of `2` replicas, the aforementioned parameters should hold these values `replicaCount=2`, `ejbcaAdminPassword=secretPassword`, `mariadb.auth.password=dbPassword`.
 
-> **Tip**: You can modify the file [values.yaml](https://github.com/bitnami/charts/tree/main/bitnami/ejbca/values.yaml)
+> **Tip**: You can modify the file [values.yaml](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/ejbca/values.yaml)
 
 ### Configure Sidecars and Init Containers
 
@@ -151,7 +151,7 @@ externalDatabase.port=3306
 
 This chart allows you to set custom Pod affinity using the `affinity` parameter. Find more information about Pod affinity in the [Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity).
 
-As an alternative, you can use of the preset configurations for pod affinity, pod anti-affinity, and node affinity available at the [bitnami/common](https://github.com/bitnami/charts/tree/main/bitnami/common#affinities) chart. To do so, set the `podAffinityPreset`, `podAntiAffinityPreset`, or `nodeAffinityPreset` parameters.
+As an alternative, you can use of the preset configurations for pod affinity, pod anti-affinity, and node affinity available at the [bitnami/common](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/common#affinities) chart. To do so, set the `podAffinityPreset`, `podAntiAffinityPreset`, or `nodeAffinityPreset` parameters.
 
 ### Use a different EJBCA version
 
@@ -390,7 +390,7 @@ helm install my-release -f values.yaml oci://REGISTRY_NAME/REPOSITORY_NAME/ejbca
 ```
 
 > Note: You need to substitute the placeholders `REGISTRY_NAME` and `REPOSITORY_NAME` with a reference to your Helm chart registry and repository. For example, in the case of Bitnami, you need to use `REGISTRY_NAME=registry-1.docker.io` and `REPOSITORY_NAME=bitnamicharts`.
-> **Tip**: You can use the default [values.yaml](https://github.com/bitnami/charts/tree/main/bitnami/ejbca/values.yaml)
+> **Tip**: You can use the default [values.yaml](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/ejbca/values.yaml)
 
 ## Troubleshooting
 
@@ -408,7 +408,7 @@ This major release bumps the MariaDB version to 11.8. Follow the [upstream instr
 
 ### To 16.1.0
 
-This version introduces image verification for security purposes. To disable it, set `global.security.allowInsecureImages` to `true`. More details at [GitHub issue](https://github.com/bitnami/charts/issues/30850).
+This version introduces image verification for security purposes. To disable it, set `global.security.allowInsecureImages` to `true`. More details at [GitHub issue](https://github.com/general-intelligence-systems/bitnami-charts/issues/30850).
 
 ### To 16.0.0
 
@@ -426,7 +426,7 @@ This major release bumps the MariaDB version to 11.4. Follow the [upstream instr
 
 ### To 14.0.0
 
-This major release bumps the MariaDB chart version to [18.x.x](https://github.com/bitnami/charts/pull/24804); no major issues are expected during the upgrade.
+This major release bumps the MariaDB chart version to [18.x.x](https://github.com/general-intelligence-systems/bitnami-charts/pull/24804); no major issues are expected during the upgrade.
 
 ### To 13.0.0
 
@@ -487,7 +487,7 @@ Additionally, updates the MariaDB subchart to it newest major, 10.0.0, which con
 
 ### To 1.0.0
 
-MariaDB dependency version was bumped to a new major version that introduces several incompatilibites. Therefore, backwards compatibility is not guaranteed unless an external database is used. Check [MariaDB Upgrading Notes](https://github.com/bitnami/charts/tree/main/bitnami/mariadb#to-800) for more information.
+MariaDB dependency version was bumped to a new major version that introduces several incompatilibites. Therefore, backwards compatibility is not guaranteed unless an external database is used. Check [MariaDB Upgrading Notes](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/mariadb#to-800) for more information.
 
 To upgrade to `1.0.0`, you have two alternatives:
 

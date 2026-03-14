@@ -4,7 +4,7 @@ APP VERSION: {{ .Chart.AppVersion }}
 
 ⚠ WARNING: Since August 28th, 2025, only a limited subset of images/charts are available for free.
     Subscribe to Bitnami Secure Images to receive continued support and security updates.
-    More info at https://bitnami.com and https://github.com/bitnami/containers/issues/83267
+    More info at https://github.com/general-intelligence-systems/bitnami-charts and https://github.com/bitnami/containers/issues/83267
 
 ** Please be patient while the chart is being deployed **
 
@@ -15,14 +15,14 @@ APP VERSION: {{ .Chart.AppVersion }}
 
 Complete your Gitlab Runner deployment by running:
 
-  helm upgrade --namespace {{ include "common.names.namespace" . }} {{ .Release.Name }} oci://registry-1.docker.io/bitnamicharts/gitlab-runner \
+  helm upgrade --namespace {{ include "common.names.namespace" . }} {{ .Release.Name }} oci://ghcr.io/general-intelligence-systems/bitnami-charts/gitlab-runner \
     --set gitlabUrl=YOUR_GITLAB_HOST,runnerToken=YOUR_RUNNER_TOKEN
 
 Replacing "YOUR_GITLAB_HOST" and "YOUR_RUNNER_TOKEN" placeholders by the proper values of your Gitlab deployment.
 
 or
 
-helm upgrade --namespace {{ include "common.names.namespace" . }} {{ .Release.Name }} oci://registry-1.docker.io/bitnamicharts/gitlab-runner \
+helm upgrade --namespace {{ include "common.names.namespace" . }} {{ .Release.Name }} oci://ghcr.io/general-intelligence-systems/bitnami-charts/gitlab-runner \
 --set gitlabUrl=YOUR_GITLAB_HOST,existingSecret=YOUR_SECRET
 
 Replacing "YOUR_GITLAB_HOST" and "YOUR_SECRET" placeholders by the proper values of your Gitlab deployment.

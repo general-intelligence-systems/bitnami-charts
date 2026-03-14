@@ -11,7 +11,7 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/schema-registry
+helm install my-release oci://ghcr.io/general-intelligence-systems/bitnami-charts/schema-registry
 ```
 
 ## Why use Bitnami Secure Images?
@@ -24,7 +24,7 @@ Those are hardened, minimal CVE images built and maintained by Bitnami. Bitnami 
 - Software supply chain provenance attestation through in-toto
 - First class support for the internet’s favorite Helm charts
 
-Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://bitnami.com/).
+Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://github.com/general-intelligence-systems/bitnami-charts/).
 
 ![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%201.png?raw=true "Application details")
 ![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%202.png?raw=true "Packaging report")
@@ -60,7 +60,7 @@ These commands deploy Schema Registry on the Kubernetes cluster with the default
 
 Bitnami charts allow setting resource requests and limits for all containers inside the chart deployment. These are inside the `resources` value (check parameter table). Setting requests is essential for production workloads and these should be adapted to your specific use case.
 
-To make this process easier, the chart contains the `resourcesPreset` values, which automatically sets the `resources` section according to different presets. Check these presets in [the bitnami/common chart](https://github.com/bitnami/charts/blob/main/bitnami/common/templates/_resources.tpl#L15). However, in production workloads using `resourcesPreset` is discouraged as it may not fully adapt to your specific needs. Find more information on container resource management in the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/).
+To make this process easier, the chart contains the `resourcesPreset` values, which automatically sets the `resources` section according to different presets. Check these presets in [the bitnami/common chart](https://github.com/general-intelligence-systems/bitnami-charts/blob/main/bitnami/common/templates/_resources.tpl#L15). However, in production workloads using `resourcesPreset` is discouraged as it may not fully adapt to your specific needs. Find more information on container resource management in the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/).
 
 ### [Rolling VS Immutable tags](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-understand-rolling-tags-containers-index.html)
 
@@ -204,7 +204,7 @@ externalKafka.auth.jaas.existingSecret=my-secret
 
 ### Ingress
 
-This chart provides support for Ingress resources. If you have an ingress controller installed on your cluster, such as [nginx-ingress-controller](https://github.com/bitnami/charts/tree/main/bitnami/nginx-ingress-controller) or [contour](https://github.com/bitnami/charts/tree/main/bitnami/contour) you can utilize the ingress controller to serve your application.
+This chart provides support for Ingress resources. If you have an ingress controller installed on your cluster, such as [nginx-ingress-controller](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/nginx-ingress-controller) or [contour](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/contour) you can utilize the ingress controller to serve your application.
 To enable Ingress integration, set `ingress.enabled` to `true`. The `ingress.hostname` property can be used to set the host name.
 
 #### Hosts
@@ -437,7 +437,7 @@ helm install my-release -f values.yaml oci://REGISTRY_NAME/REPOSITORY_NAME/schem
 ```
 
 > Note: You need to substitute the placeholders `REGISTRY_NAME` and `REPOSITORY_NAME` with a reference to your Helm chart registry and repository. For example, in the case of Bitnami, you need to use `REGISTRY_NAME=registry-1.docker.io` and `REPOSITORY_NAME=bitnamicharts`.
-> **Tip**: You can use the default [values.yaml](https://github.com/bitnami/charts/tree/main/bitnami/schema-registry/values.yaml)
+> **Tip**: You can use the default [values.yaml](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/schema-registry/values.yaml)
 
 ## Troubleshooting
 
@@ -447,23 +447,23 @@ Find more information about how to deal with common errors related to Bitnami's 
 
 ### To 24.0.0
 
-This major updates the Kafka subchart to its newest major, 32.0.0. For more information on this subchart's major, please refer to [Kafka upgrade notes](https://github.com/bitnami/charts/tree/main/bitnami/kafka#to-3200).
+This major updates the Kafka subchart to its newest major, 32.0.0. For more information on this subchart's major, please refer to [Kafka upgrade notes](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/kafka#to-3200).
 
 ### To 23.1.0
 
-This version introduces image verification for security purposes. To disable it, set `global.security.allowInsecureImages` to `true`. More details at [GitHub issue](https://github.com/bitnami/charts/issues/30850).
+This version introduces image verification for security purposes. To disable it, set `global.security.allowInsecureImages` to `true`. More details at [GitHub issue](https://github.com/general-intelligence-systems/bitnami-charts/issues/30850).
 
 ### To 22.0.0
 
-This major updates the Kafka subchart to its newest major, 31.0.0. For more information on this subchart's major, please refer to [Kafka upgrade notes](https://github.com/bitnami/charts/tree/main/bitnami/kafka#to-3100).
+This major updates the Kafka subchart to its newest major, 31.0.0. For more information on this subchart's major, please refer to [Kafka upgrade notes](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/kafka#to-3100).
 
 ### To 21.0.0
 
-This major updates the Kafka subchart to its newest major, 30.0.0. For more information on this subchart's major, please refer to [Kafka upgrade notes](https://github.com/bitnami/charts/tree/main/bitnami/kafka#to-3000).
+This major updates the Kafka subchart to its newest major, 30.0.0. For more information on this subchart's major, please refer to [Kafka upgrade notes](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/kafka#to-3000).
 
 ### To 19.0.0
 
-This major updates the Kafka subchart to its newest major, 29.0.0. For more information on this subchart's major, please refer to [Kafka upgrade notes](https://github.com/bitnami/charts/tree/main/bitnami/kafka#to-2900).
+This major updates the Kafka subchart to its newest major, 29.0.0. For more information on this subchart's major, please refer to [Kafka upgrade notes](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/kafka#to-2900).
 
 ### To 18.0.0
 
@@ -478,15 +478,15 @@ This could potentially break any customization or init scripts used in your depl
 
 ### To 16.0.0
 
-This major updates the Kafka subchart to its newest major, 26.0.0. For more information on this subchart's major, please refer to [Kafka upgrade notes](https://github.com/bitnami/charts/tree/main/bitnami/kafka#to-2600).
+This major updates the Kafka subchart to its newest major, 26.0.0. For more information on this subchart's major, please refer to [Kafka upgrade notes](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/kafka#to-2600).
 
 ### To 14.0.0
 
-This major updates the Kafka subchart to its newest major, 25.0.0. For more information on this subchart's major, please refer to [Kafka upgrade notes](https://github.com/bitnami/charts/tree/main/bitnami/kafka#to-2500).
+This major updates the Kafka subchart to its newest major, 25.0.0. For more information on this subchart's major, please refer to [Kafka upgrade notes](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/kafka#to-2500).
 
 ### To 13.0.0
 
-This major updates the Kafka subchart to its newest major, 24.0.0. This new version refactors the Kafka chart architecture and requires manual actions during the upgrade. For more information on this subchart's major, please refer to [Kafka upgrade notes](https://github.com/bitnami/charts/tree/main/bitnami/kafka#to-2400).
+This major updates the Kafka subchart to its newest major, 24.0.0. This new version refactors the Kafka chart architecture and requires manual actions during the upgrade. For more information on this subchart's major, please refer to [Kafka upgrade notes](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/kafka#to-2400).
 
 Additionally, `externalKafka` parameters have been renamed to match the new kafka format:
 
@@ -497,23 +497,23 @@ Additionally, `externalKafka` parameters have been renamed to match the new kafk
 
 ### To 10.0.0
 
-This major updates the Kafka subchart to its newest major, 22.0.0. This new version of Kafka uses Kraft by default. For more information on this subchart's major, please refer to [Kafka upgrade notes](https://github.com/bitnami/charts/tree/main/bitnami/kafka#to-2200).
+This major updates the Kafka subchart to its newest major, 22.0.0. This new version of Kafka uses Kraft by default. For more information on this subchart's major, please refer to [Kafka upgrade notes](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/kafka#to-2200).
 
 ### To 9.0.0
 
-This major updates the Kafka subchart to its newest major, 21.0.0. For more information on this subchart's major, please refer to [Kafka upgrade notes](https://github.com/bitnami/charts/tree/main/bitnami/kafka#to-2100).
+This major updates the Kafka subchart to its newest major, 21.0.0. For more information on this subchart's major, please refer to [Kafka upgrade notes](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/kafka#to-2100).
 
 ### To 8.0.0
 
-This major updates the Kafka subchart to its newest major, 20.0.0. For more information on this subchart's major, please refer to [Kafka upgrade notes](https://github.com/bitnami/charts/tree/main/bitnami/kafka#to-2000).
+This major updates the Kafka subchart to its newest major, 20.0.0. For more information on this subchart's major, please refer to [Kafka upgrade notes](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/kafka#to-2000).
 
 ### To 6.0.0
 
-This major updates the Kafka subchart to its newest major, 19.0.0. For more information on this subchart's major, please refer to [Kafka upgrade notes](https://github.com/bitnami/charts/tree/main/bitnami/kafka#to-1900).
+This major updates the Kafka subchart to its newest major, 19.0.0. For more information on this subchart's major, please refer to [Kafka upgrade notes](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/kafka#to-1900).
 
 ### To 4.0.0
 
-This version bump the version of charts used as dependency in a major. Kafka from 12.X.X to 18.X.X ([here](https://github.com/bitnami/charts/tree/main/bitnami/kafka#to-1800) you can see the changes introduced in this version).
+This version bump the version of charts used as dependency in a major. Kafka from 12.X.X to 18.X.X ([here](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/kafka#to-1800) you can see the changes introduced in this version).
 
 ### To 3.0.0
 
@@ -528,7 +528,7 @@ Affected values:
 
 ### To 2.0.0
 
-This version bump the version of charts used as dependency in a major. Kafka from 11.X.X to 12.X.X ([here](https://github.com/bitnami/charts/tree/main/bitnami/kafka#to-1220) you can see the changes introduced in this version) and common from 0.X.X to 1.X.X ([here](https://github.com/bitnami/charts/tree/main/bitnami/common#to-100) you can find the changes introduced in this version). Mainly the changes in both subcharts are related to the Helm v2 EOL.
+This version bump the version of charts used as dependency in a major. Kafka from 11.X.X to 12.X.X ([here](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/kafka#to-1220) you can see the changes introduced in this version) and common from 0.X.X to 1.X.X ([here](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/common#to-100) you can find the changes introduced in this version). Mainly the changes in both subcharts are related to the Helm v2 EOL.
 
 ### To 1.0.0
 

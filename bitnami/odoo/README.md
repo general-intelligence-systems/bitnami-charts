@@ -11,7 +11,7 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/odoo
+helm install my-release oci://ghcr.io/general-intelligence-systems/bitnami-charts/odoo
 ```
 
 ## Why use Bitnami Secure Images?
@@ -24,7 +24,7 @@ Those are hardened, minimal CVE images built and maintained by Bitnami. Bitnami 
 - Software supply chain provenance attestation through in-toto
 - First class support for the internet’s favorite Helm charts
 
-Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://bitnami.com/).
+Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://github.com/general-intelligence-systems/bitnami-charts/).
 
 ![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%201.png?raw=true "Application details")
 ![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%202.png?raw=true "Packaging report")
@@ -64,7 +64,7 @@ The command deploys Odoo on the Kubernetes cluster in the default configuration.
 
 Bitnami charts allow setting resource requests and limits for all containers inside the chart deployment. These are inside the `resources` value (check parameter table). Setting requests is essential for production workloads and these should be adapted to your specific use case.
 
-To make this process easier, the chart contains the `resourcesPreset` values, which automatically sets the `resources` section according to different presets. Check these presets in [the bitnami/common chart](https://github.com/bitnami/charts/blob/main/bitnami/common/templates/_resources.tpl#L15). However, in production workloads using `resourcesPreset` is discouraged as it may not fully adapt to your specific needs. Find more information on container resource management in the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/).
+To make this process easier, the chart contains the `resourcesPreset` values, which automatically sets the `resources` section according to different presets. Check these presets in [the bitnami/common chart](https://github.com/general-intelligence-systems/bitnami-charts/blob/main/bitnami/common/templates/_resources.tpl#L15). However, in production workloads using `resourcesPreset` is discouraged as it may not fully adapt to your specific needs. Find more information on container resource management in the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/).
 
 ### [Rolling VS Immutable tags](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-understand-rolling-tags-containers-index.html)
 
@@ -121,7 +121,7 @@ Similarly, you can add extra init containers using the `initContainers` paramete
 
 This chart allows you to set your custom affinity using the `affinity` parameter. Find more information about Pod's affinity in the [kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity).
 
-As an alternative, you can use of the preset configurations for pod affinity, pod anti-affinity, and node affinity available at the [bitnami/common](https://github.com/bitnami/charts/tree/main/bitnami/common#affinities) chart. To do so, set the `podAffinityPreset`, `podAntiAffinityPreset`, or `nodeAffinityPreset` parameters.
+As an alternative, you can use of the preset configurations for pod affinity, pod anti-affinity, and node affinity available at the [bitnami/common](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/common#affinities) chart. To do so, set the `podAffinityPreset`, `podAntiAffinityPreset`, or `nodeAffinityPreset` parameters.
 
 ### Backup and restore
 
@@ -397,7 +397,7 @@ helm install my-release -f values.yaml oci://REGISTRY_NAME/REPOSITORY_NAME/odoo
 ```
 
 > Note: You need to substitute the placeholders `REGISTRY_NAME` and `REPOSITORY_NAME` with a reference to your Helm chart registry and repository. For example, in the case of Bitnami, you need to use `REGISTRY_NAME=registry-1.docker.io` and `REPOSITORY_NAME=bitnamicharts`.
-> **Tip**: You can use the default [values.yaml](https://github.com/bitnami/charts/tree/main/bitnami/odoo/values.yaml)
+> **Tip**: You can use the default [values.yaml](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/odoo/values.yaml)
 
 ## Troubleshooting
 
@@ -407,7 +407,7 @@ Find more information about how to deal with common errors related to Bitnami's 
 
 ### To 28.1.0
 
-This version introduces image verification for security purposes. To disable it, set `global.security.allowInsecureImages` to `true`. More details at [GitHub issue](https://github.com/bitnami/charts/issues/30850).
+This version introduces image verification for security purposes. To disable it, set `global.security.allowInsecureImages` to `true`. More details at [GitHub issue](https://github.com/general-intelligence-systems/bitnami-charts/issues/30850).
 
 ### To 27.0.0
 
@@ -423,19 +423,19 @@ This major bump changes the following security defaults:
 
 This could potentially break any customization or init scripts used in your deployment. If this is the case, change the default values to the previous ones.
 
-Also, this major release bumps the PostgreSQL chart version to [15.x.x](https://github.com/bitnami/charts/pull/24171).
+Also, this major release bumps the PostgreSQL chart version to [15.x.x](https://github.com/general-intelligence-systems/bitnami-charts/pull/24171).
 
 ### To 24.0.0
 
-This major updates the PostgreSQL subchart to its newest major, 13.0.0. [Here](https://github.com/bitnami/charts/tree/master/bitnami/postgresql#to-1300) you can find more information about the changes introduced in that version.
+This major updates the PostgreSQL subchart to its newest major, 13.0.0. [Here](https://github.com/general-intelligence-systems/bitnami-charts/tree/master/bitnami/postgresql#to-1300) you can find more information about the changes introduced in that version.
 
 ### To 23.0.0
 
-This major updates the PostgreSQL subchart to its newest major, 12.0.0. [Here](https://github.com/bitnami/charts/tree/master/bitnami/postgresql#to-1200) you can find more information about the changes introduced in that version.
+This major updates the PostgreSQL subchart to its newest major, 12.0.0. [Here](https://github.com/general-intelligence-systems/bitnami-charts/tree/master/bitnami/postgresql#to-1200) you can find more information about the changes introduced in that version.
 
 ### To 21.0.0
 
-This major release updates the PostgreSQL subchart to its newest major *11.x.x*, which contain several changes in the supported values (check the [upgrade notes](https://github.com/bitnami/charts/tree/master/bitnami/postgresql#to-1100) to obtain more information).
+This major release updates the PostgreSQL subchart to its newest major *11.x.x*, which contain several changes in the supported values (check the [upgrade notes](https://github.com/general-intelligence-systems/bitnami-charts/tree/master/bitnami/postgresql#to-1100) to obtain more information).
 
 #### Upgrading Instructions
 

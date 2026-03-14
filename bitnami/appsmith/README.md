@@ -11,7 +11,7 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/appsmith
+helm install my-release oci://ghcr.io/general-intelligence-systems/bitnami-charts/appsmith
 ```
 
 ## Why use Bitnami Secure Images?
@@ -24,7 +24,7 @@ Those are hardened, minimal CVE images built and maintained by Bitnami. Bitnami 
 - Software supply chain provenance attestation through in-toto
 - First class support for the internet’s favorite Helm charts
 
-Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://bitnami.com/).
+Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://github.com/general-intelligence-systems/bitnami-charts/).
 
 ![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%201.png?raw=true "Application details")
 ![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%202.png?raw=true "Packaging report")
@@ -64,7 +64,7 @@ The command deploys Appsmith on the Kubernetes cluster in the default configurat
 
 Bitnami charts allow setting resource requests and limits for all containers inside the chart deployment. These are inside the `resources` value (check parameter table). Setting requests is essential for production workloads and these should be adapted to your specific use case.
 
-To make this process easier, the chart contains the `resourcesPreset` values, which automatically sets the `resources` section according to different presets. Check these presets in [the bitnami/common chart](https://github.com/bitnami/charts/blob/main/bitnami/common/templates/_resources.tpl#L15). However, in production workloads using `resourcesPreset` is discouraged as it may not fully adapt to your specific needs. Find more information on container resource management in the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/).
+To make this process easier, the chart contains the `resourcesPreset` values, which automatically sets the `resources` section according to different presets. Check these presets in [the bitnami/common chart](https://github.com/general-intelligence-systems/bitnami-charts/blob/main/bitnami/common/templates/_resources.tpl#L15). However, in production workloads using `resourcesPreset` is discouraged as it may not fully adapt to your specific needs. Find more information on container resource management in the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/).
 
 ### [Rolling VS Immutable tags](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-understand-rolling-tags-containers-index.html)
 
@@ -109,7 +109,7 @@ externalRedis.port=6379
 
 ### Ingress
 
-This chart provides support for Ingress resources. If you have an ingress controller installed on your cluster, such as [nginx-ingress-controller](https://github.com/bitnami/charts/tree/main/bitnami/nginx-ingress-controller) or [contour](https://github.com/bitnami/charts/tree/main/bitnami/contour) you can utilize the ingress controller to serve your application.To enable Ingress integration, set `client.ingress.enabled` to `true`.
+This chart provides support for Ingress resources. If you have an ingress controller installed on your cluster, such as [nginx-ingress-controller](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/nginx-ingress-controller) or [contour](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/contour) you can utilize the ingress controller to serve your application.To enable Ingress integration, set `client.ingress.enabled` to `true`.
 
 The most common scenario is to have one host name mapped to the deployment. In this case, the `client.ingress.hostname` property can be used to set the host name. The `client.ingress.tls` parameter can be used to add the TLS configuration for this host.
 
@@ -217,7 +217,7 @@ Learn more about [sidecar containers](https://kubernetes.io/docs/concepts/worklo
 
 This chart allows you to set your custom affinity using the `affinity` parameter. Find more information about Pod affinity in the [kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity).
 
-As an alternative, use one of the preset configurations for pod affinity, pod anti-affinity, and node affinity available at the [bitnami/common](https://github.com/bitnami/charts/tree/main/bitnami/common#affinities) chart. To do so, set the `podAffinityPreset`, `podAntiAffinityPreset`, or `nodeAffinityPreset` parameters inside the `client`, `backend` and `rts` sections.
+As an alternative, use one of the preset configurations for pod affinity, pod anti-affinity, and node affinity available at the [bitnami/common](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/common#affinities) chart. To do so, set the `podAffinityPreset`, `podAntiAffinityPreset`, or `nodeAffinityPreset` parameters inside the `client`, `backend` and `rts` sections.
 
 ### Backup and restore
 
@@ -760,7 +760,7 @@ helm install my-release -f values.yaml oci://REGISTRY_NAME/REPOSITORY_NAME/appsm
 ```
 
 > Note: You need to substitute the placeholders `REGISTRY_NAME` and `REPOSITORY_NAME` with a reference to your Helm chart registry and repository. For example, in the case of Bitnami, you need to use `REGISTRY_NAME=registry-1.docker.io` and `REPOSITORY_NAME=bitnamicharts`.
-> **Tip**: You can use the default [values.yaml](https://github.com/bitnami/charts/tree/main/bitnami/appsmith/values.yaml)
+> **Tip**: You can use the default [values.yaml](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/appsmith/values.yaml)
 
 ## Troubleshooting
 
@@ -774,7 +774,7 @@ This major updates the Redis&reg; subchart to its newest major, 22.0.0, which up
 
 ### To 6.0.19
 
-This version addresses CVE-2025-41240. For more details, please refer to the advisory at [https://github.com/bitnami/charts/security/advisories/GHSA-wgg9-9qgw-529w](https://github.com/bitnami/charts/security/advisories/GHSA-wgg9-9qgw-529w).
+This version addresses CVE-2025-41240. For more details, please refer to the advisory at [https://github.com/general-intelligence-systems/bitnami-charts/security/advisories/GHSA-wgg9-9qgw-529w](https://github.com/general-intelligence-systems/bitnami-charts/security/advisories/GHSA-wgg9-9qgw-529w).
 
 ### To 6.0.0
 
@@ -782,15 +782,15 @@ This major updates the Redis&reg; subchart to its newest major, 21.0.0, which up
 
 ### To 5.1.0
 
-This version introduces image verification for security purposes. To disable it, set `global.security.allowInsecureImages` to `true`. More details at [GitHub issue](https://github.com/bitnami/charts/issues/30850).
+This version introduces image verification for security purposes. To disable it, set `global.security.allowInsecureImages` to `true`. More details at [GitHub issue](https://github.com/general-intelligence-systems/bitnami-charts/issues/30850).
 
 ### To 5.0.0
 
-This major updates the MongoDB&reg; subchart to its newest major, [16.0.0](https://github.com/bitnami/charts/tree/main/bitnami/mongodb#to-1600). To upgrade to MongoDB `8.0` from a `7.0` deployment, the `7.0` deployment must have `featureCompatibilityVersion` set to `7.0`. Please refer to the [official documentation](https://www.mongodb.com/docs/manual/release-notes/8.0/#upgrade-procedures).
+This major updates the MongoDB&reg; subchart to its newest major, [16.0.0](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/mongodb#to-1600). To upgrade to MongoDB `8.0` from a `7.0` deployment, the `7.0` deployment must have `featureCompatibilityVersion` set to `7.0`. Please refer to the [official documentation](https://www.mongodb.com/docs/manual/release-notes/8.0/#upgrade-procedures).
 
 ### To 4.0.0
 
-This major updates the Redis&reg; subchart to its newest major, 20.0.0. [Here](https://github.com/bitnami/charts/tree/main/bitnami/redis#to-2000) you can find more information about the changes introduced in that version.
+This major updates the Redis&reg; subchart to its newest major, 20.0.0. [Here](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/redis#to-2000) you can find more information about the changes introduced in that version.
 
 ### To 3.0.0
 
@@ -805,11 +805,11 @@ This could potentially break any customization or init scripts used in your depl
 
 ### To 2.0.0
 
-This major updates the MongoDB&reg; subchart to its newest major, [14.0.0](https://github.com/bitnami/charts/tree/main/bitnami/mongodb#to-1400). No major issues are expected during the upgrade.
+This major updates the MongoDB&reg; subchart to its newest major, [14.0.0](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/mongodb#to-1400). No major issues are expected during the upgrade.
 
 ### To 1.0.0
 
-This major updates the Redis&reg; subchart to its newest major, 18.0.0. [Here](https://github.com/bitnami/charts/tree/main/bitnami/redis#to-1800) you can find more information about the changes introduced in that version.
+This major updates the Redis&reg; subchart to its newest major, 18.0.0. [Here](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/redis#to-1800) you can find more information about the changes introduced in that version.
 
 NOTE: Due to an error in our release process, Redis&reg;' chart versions higher or equal than 17.15.4 already use Redis&reg; 7.2 by default.
 

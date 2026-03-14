@@ -4,7 +4,7 @@ APP VERSION: {{ .Chart.AppVersion }}
 
 ⚠ WARNING: Since August 28th, 2025, only a limited subset of images/charts are available for free.
     Subscribe to Bitnami Secure Images to receive continued support and security updates.
-    More info at https://bitnami.com and https://github.com/bitnami/containers/issues/83267
+    More info at https://github.com/general-intelligence-systems/bitnami-charts and https://github.com/bitnami/containers/issues/83267
 
 ** Please be patient while the chart is being deployed **
 
@@ -46,7 +46,7 @@ Option A:
 
   You complete your metrics-server release by running:
 
-  helm upgrade --namespace {{ include "common.names.namespace" . }} {{ .Release.Name }} oci://registry-1.docker.io/bitnamicharts/metrics-server \
+  helm upgrade --namespace {{ include "common.names.namespace" . }} {{ .Release.Name }} oci://ghcr.io/general-intelligence-systems/bitnami-charts/metrics-server \
     --set apiService.create=true
 
 Option B:

@@ -13,7 +13,7 @@ Usage:
 Params:
   - existingSecret - ExistingSecret/String - Optional. The path to the existing secrets in the values.yaml given by the user
     to be used instead of the default one. Allows for it to be of type String (just the secret name) for backwards compatibility.
-    +info: https://github.com/bitnami/charts/tree/main/bitnami/common#existingsecret
+    +info: https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/common#existingsecret
   - defaultNameSuffix - String - Optional. It is used only if we have several secrets in the same deployment.
   - context - Dict - Required. The context for the template evaluation.
 */}}
@@ -46,7 +46,7 @@ Usage:
 Params:
   - existingSecret - ExistingSecret/String - Optional. The path to the existing secrets in the values.yaml given by the user
     to be used instead of the default one. Allows for it to be of type String (just the secret name) for backwards compatibility.
-    +info: https://github.com/bitnami/charts/tree/main/bitnami/common#existingsecret
+    +info: https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/common#existingsecret
   - key - String - Required. Name of the key in the secret.
 */}}
 {{- define "common.secrets.key" -}}

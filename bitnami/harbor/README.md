@@ -9,7 +9,7 @@ Harbor is an open source trusted cloud-native registry to store, sign, and scan 
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/harbor
+helm install my-release oci://ghcr.io/general-intelligence-systems/bitnami-charts/harbor
 ```
 
 ## Why use Bitnami Secure Images?
@@ -22,7 +22,7 @@ Those are hardened, minimal CVE images built and maintained by Bitnami. Bitnami 
 - Software supply chain provenance attestation through in-toto
 - First class support for the internet’s favorite Helm charts
 
-Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://bitnami.com/).
+Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://github.com/general-intelligence-systems/bitnami-charts/).
 
 ![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%201.png?raw=true "Application details")
 ![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%202.png?raw=true "Packaging report")
@@ -66,7 +66,7 @@ helm install my-release oci://REGISTRY_NAME/REPOSITORY_NAME/harbor
 
 Bitnami charts allow setting resource requests and limits for all containers inside the chart deployment. These are inside the `resources` value (check parameter table). Setting requests is essential for production workloads and these should be adapted to your specific use case.
 
-To make this process easier, the chart contains the `resourcesPreset` values, which automatically sets the `resources` section according to different presets. Check these presets in [the bitnami/common chart](https://github.com/bitnami/charts/blob/main/bitnami/common/templates/_resources.tpl#L15). However, in production workloads using `resourcesPreset` is discouraged as it may not fully adapt to your specific needs. Find more information on container resource management in the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/).
+To make this process easier, the chart contains the `resourcesPreset` values, which automatically sets the `resources` section according to different presets. Check these presets in [the bitnami/common chart](https://github.com/general-intelligence-systems/bitnami-charts/blob/main/bitnami/common/templates/_resources.tpl#L15). However, in production workloads using `resourcesPreset` is discouraged as it may not fully adapt to your specific needs. Find more information on container resource management in the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/).
 
 ### [Rolling VS Immutable tags](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-understand-rolling-tags-containers-index.html)
 
@@ -80,7 +80,7 @@ This chart can be integrated with Prometheus by setting `metrics.enabled` to tru
 
 #### Prometheus requirements
 
-It is necessary to have a working installation of Prometheus or Prometheus Operator for the integration to work. Install the [Bitnami Prometheus helm chart](https://github.com/bitnami/charts/tree/main/bitnami/prometheus) or the [Bitnami Kube Prometheus helm chart](https://github.com/bitnami/charts/tree/main/bitnami/kube-prometheus) to easily have a working Prometheus in your cluster.
+It is necessary to have a working installation of Prometheus or Prometheus Operator for the integration to work. Install the [Bitnami Prometheus helm chart](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/prometheus) or the [Bitnami Kube Prometheus helm chart](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/kube-prometheus) to easily have a working Prometheus in your cluster.
 
 #### Integration with Prometheus Operator
 
@@ -90,7 +90,7 @@ The chart can deploy `ServiceMonitor` objects for integration with Prometheus Op
 no matches for kind "ServiceMonitor" in version "monitoring.coreos.com/v1"
 ```
 
-Install the [Bitnami Kube Prometheus helm chart](https://github.com/bitnami/charts/tree/main/bitnami/kube-prometheus) for having the necessary CRDs and the Prometheus Operator.
+Install the [Bitnami Kube Prometheus helm chart](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/kube-prometheus) for having the necessary CRDs and the Prometheus Operator.
 
 ### Configure the way how to expose Harbor core
 
@@ -201,7 +201,7 @@ Keep in mind that the `HARBOR_ADMIN_PASSWORD` is only used to boostrap your harb
 
 This chart allows you to set your custom affinity using the `XXX.affinity` parameter(s). Find more information about Pod's affinity in the [kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity).
 
-As an alternative, you can use of the preset configurations for pod affinity, pod anti-affinity, and node affinity available at the [bitnami/common](https://github.com/bitnami/charts/tree/main/bitnami/common#affinities) chart. To do so, set the `XXX.podAffinityPreset`, `XXX.podAntiAffinityPreset`, or `XXX.nodeAffinityPreset` parameters.
+As an alternative, you can use of the preset configurations for pod affinity, pod anti-affinity, and node affinity available at the [bitnami/common](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/common#affinities) chart. To do so, set the `XXX.podAffinityPreset`, `XXX.podAntiAffinityPreset`, or `XXX.nodeAffinityPreset` parameters.
 
 ### Adjust permissions of persistent volume mountpoint
 
@@ -1408,7 +1408,7 @@ This version uses the PostgreSQL version provided by the bitnami/postgresql subc
 
 ### To 24.1.0
 
-This version introduces image verification for security purposes. To disable it, set `global.security.allowInsecureImages` to `true`. More details at [GitHub issue](https://github.com/bitnami/charts/issues/30850).
+This version introduces image verification for security purposes. To disable it, set `global.security.allowInsecureImages` to `true`. More details at [GitHub issue](https://github.com/general-intelligence-systems/bitnami-charts/issues/30850).
 
 ### To 24.0.1
 
@@ -1420,7 +1420,7 @@ This major updates the PostgreSQL subchart to its newest major, 16.0.0, which us
 
 ### To 23.0.0
 
-This major updates the Redis&reg; subchart to its newest major, 20.0.0. [Here](https://github.com/bitnami/charts/tree/main/bitnami/redis#to-2000) you can find more information about the changes introduced in that version.
+This major updates the Redis&reg; subchart to its newest major, 20.0.0. [Here](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/redis#to-2000) you can find more information about the changes introduced in that version.
 
 ### To 22.0.0
 
@@ -1449,11 +1449,11 @@ This could potentially break any customization or init scripts used in your depl
 
 ### To 20.0.0
 
-This major release bumps the PostgreSQL chart version to [14.x.x](https://github.com/bitnami/charts/pull/22750); no major issues are expected during the upgrade.
+This major release bumps the PostgreSQL chart version to [14.x.x](https://github.com/general-intelligence-systems/bitnami-charts/pull/22750); no major issues are expected during the upgrade.
 
 ### To 19.0.0
 
-This major updates the PostgreSQL subchart to its newest major, 13.0.0. [Here](https://github.com/bitnami/charts/tree/master/bitnami/postgresql#to-1300) you can find more information about the changes introduced in that version.
+This major updates the PostgreSQL subchart to its newest major, 13.0.0. [Here](https://github.com/general-intelligence-systems/bitnami-charts/tree/master/bitnami/postgresql#to-1300) you can find more information about the changes introduced in that version.
 
 ### To 18.0.0
 
@@ -1461,13 +1461,13 @@ This major deprecates harbor notary server and harbor notary signer components. 
 
 ### To 17.0.0
 
-This major updates the Redis&reg; subchart to its newest major, 18.0.0. [Here](https://github.com/bitnami/charts/tree/main/bitnami/redis#to-1800) you can find more information about the changes introduced in that version.
+This major updates the Redis&reg; subchart to its newest major, 18.0.0. [Here](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/redis#to-1800) you can find more information about the changes introduced in that version.
 
 NOTE: Due to an error in our release process, Redis&reg;' chart versions higher or equal than 17.15.4 already use Redis&reg; 7.2 by default.
 
 ### To 16.0.0
 
-This major updates the PostgreSQL subchart to its newest major, 12.0.0. [Here](https://github.com/bitnami/charts/tree/master/bitnami/postgresql#to-1200) you can find more information about the changes introduced in that version.
+This major updates the PostgreSQL subchart to its newest major, 12.0.0. [Here](https://github.com/general-intelligence-systems/bitnami-charts/tree/master/bitnami/postgresql#to-1200) you can find more information about the changes introduced in that version.
 
 ### To 15.0.0
 
@@ -1600,11 +1600,11 @@ kubectl delete pod --namespace "${HARBOR_NAMESPACE:?}" harbor-postgresql-0
 
 ### To 11.0.0
 
-This major update the Redis&reg; subchart to its newest major, 15.0.0. [Here](https://github.com/bitnami/charts/tree/main/bitnami/redis#to-1500) you can find more info about the specific changes.
+This major update the Redis&reg; subchart to its newest major, 15.0.0. [Here](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/redis#to-1500) you can find more info about the specific changes.
 
 ### To 10.0.0
 
-This major updates the Redis&reg; subchart to it newest major, 14.0.0, which contains breaking changes. For more information on this subchart's major and the steps needed to migrate your data from your previous release, please refer to [Redis&reg; upgrade notes.](https://github.com/bitnami/charts/tree/main/bitnami/redis#to-1400).
+This major updates the Redis&reg; subchart to it newest major, 14.0.0, which contains breaking changes. For more information on this subchart's major and the steps needed to migrate your data from your previous release, please refer to [Redis&reg; upgrade notes.](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/redis#to-1400).
 
 ### To 9.7.0
 
@@ -1620,7 +1620,7 @@ Please note that Clair might be fully deprecated from this chart in following up
 - Move dependency information from the *requirements.yaml* to the *Chart.yaml*
 - After running *helm dependency update*, a *Chart.lock* file is generated containing the same structure used in the previous *requirements.lock*
 - The different fields present in the *Chart.yaml* file has been ordered alphabetically in a homogeneous way for all the Bitnami Helm Chart.
-- This chart depends on the **PostgreSQL 10** instead of **PostgreSQL 9**. Apart from the same changes that are described in this section, there are also other major changes due to the master/slave nomenclature was replaced by primary/readReplica. [Here](https://github.com/bitnami/charts/pull/4385) you can find more information about the changes introduced.
+- This chart depends on the **PostgreSQL 10** instead of **PostgreSQL 9**. Apart from the same changes that are described in this section, there are also other major changes due to the master/slave nomenclature was replaced by primary/readReplica. [Here](https://github.com/general-intelligence-systems/bitnami-charts/pull/4385) you can find more information about the changes introduced.
 
 #### Considerations when upgrading to this version
 

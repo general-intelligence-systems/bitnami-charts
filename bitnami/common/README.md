@@ -8,7 +8,7 @@ A [Helm Library Chart](https://helm.sh/docs/topics/library_charts/#helm) for gro
 dependencies:
   - name: common
     version: 2.x.x
-    repository: oci://registry-1.docker.io/bitnamicharts
+    repository: oci://ghcr.io/general-intelligence-systems/bitnami-charts
 ```
 
 ```console
@@ -34,7 +34,7 @@ Those are hardened, minimal CVE images built and maintained by Bitnami. Bitnami 
 - Software supply chain provenance attestation through in-toto
 - First class support for the internet’s favorite Helm charts
 
-Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://bitnami.com/).
+Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://github.com/general-intelligence-systems/bitnami-charts/).
 
 ![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%201.png?raw=true "Application details")
 ![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%202.png?raw=true "Packaging report")
@@ -231,8 +231,8 @@ debug:
   example: false
 
 ## An instance would be:
-# registry: docker.io
-# repository: bitnami/nginx
+# registry: ghcr.io
+# repository: general-intelligence-systems/nginx
 # tag: 1.16.1-debian-10-r63
 # pullPolicy: IfNotPresent
 # debug: false

@@ -11,7 +11,7 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/kong
+helm install my-release oci://ghcr.io/general-intelligence-systems/bitnami-charts/kong
 ```
 
 ## Why use Bitnami Secure Images?
@@ -24,7 +24,7 @@ Those are hardened, minimal CVE images built and maintained by Bitnami. Bitnami 
 - Software supply chain provenance attestation through in-toto
 - First class support for the internet’s favorite Helm charts
 
-Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://bitnami.com/).
+Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://github.com/general-intelligence-systems/bitnami-charts/).
 
 ![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%201.png?raw=true "Application details")
 ![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%202.png?raw=true "Packaging report")
@@ -63,7 +63,7 @@ These commands deploy kong on the Kubernetes cluster in the default configuratio
 
 Bitnami charts allow setting resource requests and limits for all containers inside the chart deployment. These are inside the `resources` value (check parameter table). Setting requests is essential for production workloads and these should be adapted to your specific use case.
 
-To make this process easier, the chart contains the `resourcesPreset` values, which automatically sets the `resources` section according to different presets. Check these presets in [the bitnami/common chart](https://github.com/bitnami/charts/blob/main/bitnami/common/templates/_resources.tpl#L15). However, in production workloads using `resourcesPreset` is discouraged as it may not fully adapt to your specific needs. Find more information on container resource management in the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/).
+To make this process easier, the chart contains the `resourcesPreset` values, which automatically sets the `resources` section according to different presets. Check these presets in [the bitnami/common chart](https://github.com/general-intelligence-systems/bitnami-charts/blob/main/bitnami/common/templates/_resources.tpl#L15). However, in production workloads using `resourcesPreset` is discouraged as it may not fully adapt to your specific needs. Find more information on container resource management in the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/).
 
 ### [Rolling VS Immutable tags](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-understand-rolling-tags-containers-index.html)
 
@@ -77,7 +77,7 @@ This chart can be integrated with Prometheus by setting `metrics.enabled` to `tr
 
 #### Prometheus requirements
 
-It is necessary to have a working installation of Prometheus or Prometheus Operator for the integration to work. Install the [Bitnami Prometheus helm chart](https://github.com/bitnami/charts/tree/main/bitnami/prometheus) or the [Bitnami Kube Prometheus helm chart](https://github.com/bitnami/charts/tree/main/bitnami/kube-prometheus) to easily have a working Prometheus in your cluster.
+It is necessary to have a working installation of Prometheus or Prometheus Operator for the integration to work. Install the [Bitnami Prometheus helm chart](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/prometheus) or the [Bitnami Kube Prometheus helm chart](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/kube-prometheus) to easily have a working Prometheus in your cluster.
 
 #### Integration with Prometheus Operator
 
@@ -87,7 +87,7 @@ The chart can deploy `ServiceMonitor` objects for integration with Prometheus Op
 no matches for kind "ServiceMonitor" in version "monitoring.coreos.com/v1"
 ```
 
-Install the [Bitnami Kube Prometheus helm chart](https://github.com/bitnami/charts/tree/main/bitnami/kube-prometheus) for having the necessary CRDs and the Prometheus Operator.
+Install the [Bitnami Kube Prometheus helm chart](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/kube-prometheus) for having the necessary CRDs and the Prometheus Operator.
 
 ### Database backend
 
@@ -236,7 +236,7 @@ extraDeploy:
 
 This chart allows you to set your custom affinity using the `affinity` parameter. Find more information about Pod's affinity in the [kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity).
 
-As an alternative, you can use of the preset configurations for pod affinity, pod anti-affinity, and node affinity available at the [bitnami/common](https://github.com/bitnami/charts/tree/main/bitnami/common#affinities) chart. To do so, set the `podAffinityPreset`, `podAntiAffinityPreset`, or `nodeAffinityPreset` parameters.
+As an alternative, you can use of the preset configurations for pod affinity, pod anti-affinity, and node affinity available at the [bitnami/common](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/common#affinities) chart. To do so, set the `podAffinityPreset`, `podAntiAffinityPreset`, or `nodeAffinityPreset` parameters.
 
 ## Parameters
 
@@ -566,7 +566,7 @@ helm install my-release -f values.yaml oci://REGISTRY_NAME/REPOSITORY_NAME/kong
 ```
 
 > Note: You need to substitute the placeholders `REGISTRY_NAME` and `REPOSITORY_NAME` with a reference to your Helm chart registry and repository. For example, in the case of Bitnami, you need to use `REGISTRY_NAME=registry-1.docker.io` and `REPOSITORY_NAME=bitnamicharts`.
-> **Tip**: You can use the default [values.yaml](https://github.com/bitnami/charts/tree/main/bitnami/kong/values.yaml)
+> **Tip**: You can use the default [values.yaml](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/kong/values.yaml)
 
 ## Troubleshooting
 
@@ -576,7 +576,7 @@ Find more information about how to deal with common errors related to Bitnami's 
 
 ### To 15.1.0
 
-This version introduces image verification for security purposes. To disable it, set `global.security.allowInsecureImages` to `true`. More details at [GitHub issue](https://github.com/bitnami/charts/issues/30850).
+This version introduces image verification for security purposes. To disable it, set `global.security.allowInsecureImages` to `true`. More details at [GitHub issue](https://github.com/general-intelligence-systems/bitnami-charts/issues/30850).
 
 It's necessary to specify the existing passwords while performing a upgrade to ensure the secrets are not updated with invalid randomly generated passwords. Remember to specify the existing values of the `postgresql.postgresqlPassword` or `cassandra.password` parameters when upgrading the chart:
 
@@ -601,7 +601,7 @@ This major updates the PostgreSQL subchart to its newest major, 16.0.0, which us
 
 ### To 13.0.0
 
-This major updates the Cassandra subchart to its newest major, 12.0.0. [Here](https://github.com/bitnami/charts/pull/29305) you can find more information about the changes introduced in that version.
+This major updates the Cassandra subchart to its newest major, 12.0.0. [Here](https://github.com/general-intelligence-systems/bitnami-charts/pull/29305) you can find more information about the changes introduced in that version.
 
 ### To 12.0.0
 
@@ -616,29 +616,29 @@ This could potentially break any customization or init scripts used in your depl
 
 ### To 11.0.0
 
-This major release bumps the PostgreSQL chart version to [14.x.x](https://github.com/bitnami/charts/pull/22750); no major issues are expected during the upgrade.
+This major release bumps the PostgreSQL chart version to [14.x.x](https://github.com/general-intelligence-systems/bitnami-charts/pull/22750); no major issues are expected during the upgrade.
 
 ### To 10.0.0
 
-This major updates the PostgreSQL subchart to its newest major, 13.0.0. [Here](https://github.com/bitnami/charts/tree/master/bitnami/postgresql#to-1300) you can find more information about the changes introduced in that version.
+This major updates the PostgreSQL subchart to its newest major, 13.0.0. [Here](https://github.com/general-intelligence-systems/bitnami-charts/tree/master/bitnami/postgresql#to-1300) you can find more information about the changes introduced in that version.
 
 ### To 9.0.0
 
-This major updates the Cassandra subchart to its newest major, 10.0.0. [Here](https://github.com/bitnami/charts/pull/14076) you can find more information about the changes introduced in that version.
+This major updates the Cassandra subchart to its newest major, 10.0.0. [Here](https://github.com/general-intelligence-systems/bitnami-charts/pull/14076) you can find more information about the changes introduced in that version.
 
 ### To 8.0.0
 
-This major updates the PostgreSQL subchart to its newest major, 12.0.0. [Here](https://github.com/bitnami/charts/tree/master/bitnami/postgresql#to-1200) you can find more information about the changes introduced in that version.
+This major updates the PostgreSQL subchart to its newest major, 12.0.0. [Here](https://github.com/general-intelligence-systems/bitnami-charts/tree/master/bitnami/postgresql#to-1200) you can find more information about the changes introduced in that version.
 
 ### To 6.0.0
 
-The `postgresql` sub-chart was upgraded to `11.x.x`. Several values of the sub-chart were changed, so please check the [upgrade notes](https://github.com/bitnami/charts/tree/master/bitnami/postgresql#to-1100).
+The `postgresql` sub-chart was upgraded to `11.x.x`. Several values of the sub-chart were changed, so please check the [upgrade notes](https://github.com/general-intelligence-systems/bitnami-charts/tree/master/bitnami/postgresql#to-1100).
 
 No issues are expected during the upgrade.
 
 ### To 5.0.0
 
-The `cassandra` sub-chart was upgraded to `9.x.x`. Several values of the sub-chart were changed, so please check the [upgrade notes](https://github.com/bitnami/charts/tree/main/bitnami/cassandra#to-900).
+The `cassandra` sub-chart was upgraded to `9.x.x`. Several values of the sub-chart were changed, so please check the [upgrade notes](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/cassandra#to-900).
 
 No issues are expected during the upgrade.
 
@@ -656,7 +656,7 @@ Kong Ingress Controller version was bumped to new major version, `1.x.x`. The as
 - Move dependency information from the _requirements.yaml_ to the _Chart.yaml_
 - After running `helm dependency update`, a _Chart.lock_ file is generated containing the same structure used in the previous _requirements.lock_
 - The different fields present in the _Chart.yaml_ file has been ordered alphabetically in a homogeneous way for all the Bitnami Helm Charts
-- This chart depends on the **PostgreSQL 10** instead of **PostgreSQL 9**. Apart from the same changes that are described in this section, there are also other major changes due to the master/slave nomenclature was replaced by primary/readReplica. [Here](https://github.com/bitnami/charts/pull/4385) you can find more information about the changes introduced.
+- This chart depends on the **PostgreSQL 10** instead of **PostgreSQL 9**. Apart from the same changes that are described in this section, there are also other major changes due to the master/slave nomenclature was replaced by primary/readReplica. [Here](https://github.com/general-intelligence-systems/bitnami-charts/pull/4385) you can find more information about the changes introduced.
 
 #### Considerations when upgrading to this version
 
@@ -714,7 +714,7 @@ postgresql 08:05:12.59 INFO  ==> Deploying PostgreSQL with persisted data...
 
 ### To 4.0.0
 
-This major updates the Cassandra subchart to its newest major, 4.0.0. [Here](https://github.com/bitnami/charts/tree/main/bitnami/cassandra#to-800) you can find more information about the changes introduced in those versions.
+This major updates the Cassandra subchart to its newest major, 4.0.0. [Here](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/cassandra#to-800) you can find more information about the changes introduced in those versions.
 
 ### To 2.0.0
 
@@ -722,9 +722,9 @@ PostgreSQL and Cassandra dependencies versions were bumped to new major versions
 
 In order to properly migrate your data to this new version:
 
-- If you were using PostgreSQL as your database, please refer to the [PostgreSQL Upgrade Notes](https://github.com/bitnami/charts/tree/main/bitnami/postgresql#900).
+- If you were using PostgreSQL as your database, please refer to the [PostgreSQL Upgrade Notes](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/postgresql#900).
 
-- If you were using Cassandra as your database, please refer to the [Cassandra Upgrade Notes](https://github.com/bitnami/charts/tree/main/bitnami/cassandra#to-600).
+- If you were using Cassandra as your database, please refer to the [Cassandra Upgrade Notes](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/cassandra#to-600).
 
 ## License
 

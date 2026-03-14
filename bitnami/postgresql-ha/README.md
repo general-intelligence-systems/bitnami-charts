@@ -11,7 +11,7 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/postgresql-ha
+helm install my-release oci://ghcr.io/general-intelligence-systems/bitnami-charts/postgresql-ha
 ```
 
 ## Why use Bitnami Secure Images?
@@ -24,7 +24,7 @@ Those are hardened, minimal CVE images built and maintained by Bitnami. Bitnami 
 - Software supply chain provenance attestation through in-toto
 - First class support for the internet’s favorite Helm charts
 
-Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://bitnami.com/).
+Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://github.com/general-intelligence-systems/bitnami-charts/).
 
 ![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%201.png?raw=true "Application details")
 ![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%202.png?raw=true "Packaging report")
@@ -33,9 +33,9 @@ If you are looking for our previous generation of images based on Debian Linux, 
 
 ## Introduction
 
-This [Helm](https://github.com/kubernetes/helm) chart installs [PostgreSQL](https://www.postgresql.org/) with HA architecture in a Kubernetes cluster. Welcome to [contribute](https://github.com/bitnami/charts/blob/main/CONTRIBUTING.md) to Helm Chart for PostgreSQL HA.
+This [Helm](https://github.com/kubernetes/helm) chart installs [PostgreSQL](https://www.postgresql.org/) with HA architecture in a Kubernetes cluster. Welcome to [contribute](https://github.com/general-intelligence-systems/bitnami-charts/blob/main/CONTRIBUTING.md) to Helm Chart for PostgreSQL HA.
 
-This Helm chart has been developed based on [bitnami/postgresql](https://github.com/bitnami/charts/tree/main/bitnami/postgresql) chart but including some changes to guarantee high availability such as:
+This Helm chart has been developed based on [bitnami/postgresql](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/postgresql) chart but including some changes to guarantee high availability such as:
 
 - A new deployment, service have been added to deploy [Pgpool-II](https://pgpool.net/mediawiki/index.php/Main_Page) to act as proxy for PostgreSQL backend. It helps to reduce connection overhead, acts as a load balancer for PostgreSQL, and ensures database node failover.
 - Replacing `bitnami/postgresql` with `bitnami/postgresql-repmgr` which includes and configures [repmgr](https://repmgr.org/). Repmgr ensures standby nodes assume the primary role when the primary node is unhealthy.
@@ -74,7 +74,7 @@ helm install my-release oci://REGISTRY_NAME/REPOSITORY_NAME/postgresql-ha
 
 Bitnami charts allow setting resource requests and limits for all containers inside the chart deployment. These are inside the `resources` value (check parameter table). Setting requests is essential for production workloads and these should be adapted to your specific use case.
 
-To make this process easier, the chart contains the `resourcesPreset` values, which automatically sets the `resources` section according to different presets. Check these presets in [the bitnami/common chart](https://github.com/bitnami/charts/blob/main/bitnami/common/templates/_resources.tpl#L15). However, in production workloads using `resourcesPreset` is discouraged as it may not fully adapt to your specific needs. Find more information on container resource management in the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/).
+To make this process easier, the chart contains the `resourcesPreset` values, which automatically sets the `resources` section according to different presets. Check these presets in [the bitnami/common chart](https://github.com/general-intelligence-systems/bitnami-charts/blob/main/bitnami/common/templates/_resources.tpl#L15). However, in production workloads using `resourcesPreset` is discouraged as it may not fully adapt to your specific needs. Find more information on container resource management in the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/).
 
 ### Prometheus metrics
 
@@ -82,7 +82,7 @@ This chart can be integrated with Prometheus by setting `metrics.enabled` to `tr
 
 #### Prometheus requirements
 
-It is necessary to have a working installation of Prometheus or Prometheus Operator for the integration to work. Install the [Bitnami Prometheus helm chart](https://github.com/bitnami/charts/tree/main/bitnami/prometheus) or the [Bitnami Kube Prometheus helm chart](https://github.com/bitnami/charts/tree/main/bitnami/kube-prometheus) to easily have a working Prometheus in your cluster.
+It is necessary to have a working installation of Prometheus or Prometheus Operator for the integration to work. Install the [Bitnami Prometheus helm chart](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/prometheus) or the [Bitnami Kube Prometheus helm chart](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/kube-prometheus) to easily have a working Prometheus in your cluster.
 
 #### Integration with Prometheus Operator
 
@@ -92,7 +92,7 @@ The chart can deploy `ServiceMonitor` objects for integration with Prometheus Op
 no matches for kind "ServiceMonitor" in version "monitoring.coreos.com/v1"
 ```
 
-Install the [Bitnami Kube Prometheus helm chart](https://github.com/bitnami/charts/tree/main/bitnami/kube-prometheus) for having the necessary CRDs and the Prometheus Operator.
+Install the [Bitnami Kube Prometheus helm chart](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/kube-prometheus) for having the necessary CRDs and the Prometheus Operator.
 
 ### Update credentials
 
@@ -344,7 +344,7 @@ This way, the credentials will be available in all of the sub-charts.
 
 This chart allows you to set your custom affinity using the `XXX.affinity` paremeter(s). Find more information about Pod's affinity in the [kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity).
 
-As an alternative, you can use of the preset configurations for pod affinity, pod anti-affinity, and node affinity available at the [bitnami/common](https://github.com/bitnami/charts/tree/main/bitnami/common#affinities) chart. To do so, set the `XXX.podAffinityPreset`, `XXX.podAntiAffinityPreset`, or `XXX.nodeAffinityPreset` parameters.
+As an alternative, you can use of the preset configurations for pod affinity, pod anti-affinity, and node affinity available at the [bitnami/common](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/common#affinities) chart. To do so, set the `XXX.podAffinityPreset`, `XXX.podAntiAffinityPreset`, or `XXX.nodeAffinityPreset` parameters.
 
 ### Backup and restore
 
@@ -875,7 +875,7 @@ A default `StorageClass` is needed in the Kubernetes cluster to dynamically prov
 | `metrics.serviceMonitor.scrapeTimeout`           | Service monitor scrape timeout                                                                                                                                                                                                    | `""`                                |
 | `metrics.serviceMonitor.annotations`             | Additional annotations for the ServiceMonitor                                                                                                                                                                                     | `{}`                                |
 | `metrics.serviceMonitor.labels`                  | Additional labels that can be used so ServiceMonitor will be discovered by Prometheus                                                                                                                                             | `{}`                                |
-| `metrics.serviceMonitor.selector`                | Defaults to what's used if you follow CoreOS Prometheus Install Instructions (<https://github.com/bitnami/charts/tree/main/bitnami/kube-prometheus#tldr>)                                                                         | `{}`                                |
+| `metrics.serviceMonitor.selector`                | Defaults to what's used if you follow CoreOS Prometheus Install Instructions (<https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/kube-prometheus#tldr>)                                                                         | `{}`                                |
 | `metrics.serviceMonitor.relabelings`             | ServiceMonitor relabelings. Value is evaluated as a template                                                                                                                                                                      | `[]`                                |
 | `metrics.serviceMonitor.metricRelabelings`       | ServiceMonitor metricRelabelings. Value is evaluated as a template                                                                                                                                                                | `[]`                                |
 | `metrics.serviceMonitor.honorLabels`             | Specify honorLabels parameter to add the scrape endpoint                                                                                                                                                                          | `false`                             |
@@ -1022,7 +1022,7 @@ Find more information about how to deal with common errors related to Bitnami's 
 
 This major version makes it possible to customize the user & password to be used by Pgpool-II for performing Stream Replication Checks and sets the default user to `sr_check_user`. Previously, the user was hardcoded to `repmgr`, reusing the same user used by Repmgr. This change allows for a more flexible & secure configuration, as the user used by Pgpool-II can be different from the one used by Repmgr.
 
-This major version includes a security fix for [GHSA-mx38-x658-5fwj](https://github.com/bitnami/charts/security/advisories/GHSA-mx38-x658-5fwj) and CVE-2025-22248. Upgrading to this or higher versions is recommended.
+This major version includes a security fix for [GHSA-mx38-x658-5fwj](https://github.com/general-intelligence-systems/bitnami-charts/security/advisories/GHSA-mx38-x658-5fwj) and CVE-2025-22248. Upgrading to this or higher versions is recommended.
 
 Given users' creation is skipped when there's existing data, upgrading from `15.x` to `16.x` will fail when persistence is enabled unless the user is created manually or the `pgpool.srCheckUsername` and `pgpool.srCheckPassword` parameters are set to the same values as the `postgresql.repmgrUsername` and `postgresql.repmgrPassword` parameters:
 
@@ -1030,9 +1030,9 @@ Given users' creation is skipped when there's existing data, upgrading from `15.
 
 ```console
 export POSTGRES_PASSWORD=$(kubectl get secret --namespace default postgresql-ha-postgresql -o jsonpath="{.data.password}" | base64 -d)
-kubectl run pg-client --rm --tty -i --restart='Never' --image docker.io/bitnami/postgresql-repmgr:17 --env="PGPASSWORD=$POSTGRES_PASSWORD" --command -- \
+kubectl run pg-client --rm --tty -i --restart='Never' --image ghcr.io/general-intelligence-systems/postgresql-repmgr:17 --env="PGPASSWORD=$POSTGRES_PASSWORD" --command -- \
     psql -h postgresql-ha-pgpool -p 5432 -U postgres --command "CREATE ROLE sr_check_user WITH LOGIN PASSWORD 'some-password';"
-kubectl run pg-client --rm --tty -i --restart='Never' --image docker.io/bitnami/postgresql-repmgr:17 --env="PGPASSWORD=$POSTGRES_PASSWORD" --command -- \
+kubectl run pg-client --rm --tty -i --restart='Never' --image ghcr.io/general-intelligence-systems/postgresql-repmgr:17 --env="PGPASSWORD=$POSTGRES_PASSWORD" --command -- \
     psql -h postgresql-ha-pgpool -p 5432 -U postgres --command "GRANT CONNECT ON DATABASE postgres TO sr_check_user;"
 helm upgrade my-release oci://REGISTRY_NAME/REPOSITORY_NAME/postgresql-ha \
     --set pgpool.srCheckPassword="some-password"
@@ -1049,7 +1049,7 @@ helm upgrade my-release oci://REGISTRY_NAME/REPOSITORY_NAME/postgresql-ha \
 
 ### To 15.1.0
 
-This version introduces image verification for security purposes. To disable it, set `global.security.allowInsecureImages` to `true`. More details at [GitHub issue](https://github.com/bitnami/charts/issues/30850).
+This version introduces image verification for security purposes. To disable it, set `global.security.allowInsecureImages` to `true`. More details at [GitHub issue](https://github.com/general-intelligence-systems/bitnami-charts/issues/30850).
 
 It's necessary to specify the existing passwords while performing a upgrade to ensure the secrets are not updated with invalid randomly generated passwords. Remember to specify the existing values of the `postgresql.password` and `postgresql.repmgrPassword` parameters when upgrading the chart:
 
@@ -1077,7 +1077,7 @@ postgresql-repmgr 13:57:07.50 INFO  ==> ** Starting repmgrd **
 You will need to perform the following step first, and then continue with the upgrade:
 
 ```console
-$ helm upgrade mypg oci://registry-1.docker.io/bitnamicharts/postgresql-ha \
+$ helm upgrade mypg oci://ghcr.io/general-intelligence-systems/bitnami-charts/postgresql-ha \
   --set postgresql.replicaCount=1 \
   --set postgresql.upgradeRepmgrExtension=true
 ```
@@ -1103,7 +1103,7 @@ Check the parameter section for the new value structure.
 
 This major version updates the PostgreSQL container image version used from 15 to 16, the new stable version. There are no major changes in the chart, but we recommend checking the [PostgreSQL 16 release notes](https://www.postgresql.org/docs/current/release-16.html) before upgrading.
 
-> Note: Due to an error in our release process, the latest version in the previous major branch (11.9.8) already uses 16 by default, see [PR#19590](https://github.com/bitnami/charts/pull/19590)
+> Note: Due to an error in our release process, the latest version in the previous major branch (11.9.8) already uses 16 by default, see [PR#19590](https://github.com/general-intelligence-systems/bitnami-charts/pull/19590)
 
 ### To 10.0.0
 
@@ -1326,7 +1326,7 @@ In this version, the chart will use PostgreSQL-Repmgr container images with the 
 
 Bitnami Kubernetes documentation is available at [https://docs.bitnami.com/](https://docs.bitnami.com/). You can find there the following resources:
 
-- [Documentation for PostgreSQL HA Helm chart](https://github.com/bitnami/charts/tree/main/bitnami/postgresql-ha)
+- [Documentation for PostgreSQL HA Helm chart](https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/postgresql-ha)
 - [Get Started with Kubernetes guides](https://docs.bitnami.com/kubernetes/)
 - [Kubernetes FAQs](https://docs.bitnami.com/kubernetes/faq/)
 - [Kubernetes Developer guides](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-index.html)

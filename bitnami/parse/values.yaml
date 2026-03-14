@@ -266,7 +266,7 @@ server:
   ##
   existingCloudCodeScriptsCM: ""
   ## @param server.resourcesPreset Set container resources according to one common preset (allowed values: none, nano, micro, small, medium, large, xlarge, 2xlarge). This is ignored if server.resources is set (server.resources is recommended for production).
-  ## More information: https://github.com/bitnami/charts/blob/main/bitnami/common/templates/_resources.tpl#L15
+  ## More information: https://github.com/general-intelligence-systems/bitnami-charts/blob/main/bitnami/common/templates/_resources.tpl#L15
   ##
   resourcesPreset: "nano"
   ## @param server.resources Set container requests and limits for different resources like CPU or memory (essential for production workloads)
@@ -621,7 +621,7 @@ dashboard:
   ##
   appName: MyDashboard
   ## @param dashboard.resourcesPreset Set container resources according to one common preset (allowed values: none, nano, micro, small, medium, large, xlarge, 2xlarge). This is ignored if dashboard.resources is set (dashboard.resources is recommended for production).
-  ## More information: https://github.com/bitnami/charts/blob/main/bitnami/common/templates/_resources.tpl#L15
+  ## More information: https://github.com/general-intelligence-systems/bitnami-charts/blob/main/bitnami/common/templates/_resources.tpl#L15
   ##
   resourcesPreset: "nano"
   ## @param dashboard.resources Set container requests and limits for different resources like CPU or memory (essential for production workloads)
@@ -1129,7 +1129,7 @@ volumePermissions:
     ##
     pullSecrets: []
   ## @param volumePermissions.resourcesPreset Set container resources according to one common preset (allowed values: none, nano, micro, small, medium, large, xlarge, 2xlarge). This is ignored if volumePermissions.resources is set (volumePermissions.resources is recommended for production).
-  ## More information: https://github.com/bitnami/charts/blob/main/bitnami/common/templates/_resources.tpl#L15
+  ## More information: https://github.com/general-intelligence-systems/bitnami-charts/blob/main/bitnami/common/templates/_resources.tpl#L15
   ##
   resourcesPreset: "none"
   ## @param volumePermissions.resources Set container requests and limits for different resources like CPU or memory (essential for production workloads)
@@ -1163,7 +1163,7 @@ serviceAccount:
 ##
 
 ## MongoDB&reg; chart configuration
-## https://github.com/bitnami/charts/blob/main/bitnami/mongodb/values.yaml
+## https://github.com/general-intelligence-systems/bitnami-charts/blob/main/bitnami/mongodb/values.yaml
 ##
 mongodb:
   ## @param mongodb.enabled Enable MongoDB&reg; chart
@@ -1220,7 +1220,7 @@ mongodb:
   ## resources, such as Minikube. If you do want to specify resources, uncomment the following
   ## lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   ## @param mongodb.resourcesPreset Set container resources according to one common preset (allowed values: none, nano, small, medium, large, xlarge, 2xlarge). This is ignored if resources is set (resources is recommended for production).
-  ## More information: https://github.com/bitnami/charts/blob/main/bitnami/common/templates/_resources.tpl#L15
+  ## More information: https://github.com/general-intelligence-systems/bitnami-charts/blob/main/bitnami/common/templates/_resources.tpl#L15
   ##
   resourcesPreset: "small"
   ## @param mongodb.resources Set container requests and limits for different resources like CPU or memory (essential for production workloads)

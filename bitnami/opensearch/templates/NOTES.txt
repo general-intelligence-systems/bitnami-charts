@@ -4,7 +4,7 @@ APP VERSION: {{ .Chart.AppVersion }}
 
 ⚠ WARNING: Since August 28th, 2025, only a limited subset of images/charts are available for free.
     Subscribe to Bitnami Secure Images to receive continued support and security updates.
-    More info at https://bitnami.com and https://github.com/bitnami/containers/issues/83267
+    More info at https://github.com/general-intelligence-systems/bitnami-charts and https://github.com/bitnami/containers/issues/83267
 
 {{- if contains .Values.service.type "LoadBalancer" }}
 
@@ -43,7 +43,7 @@ APP VERSION: {{ .Chart.AppVersion }}
     As an alternative, you can specify "sysctlImage.enabled=true" to use a
     privileged initContainer to change those settings in the Kernel:
 
-      helm upgrade --namespace {{ include "common.names.namespace" . }} {{ .Release.Name }} oci://registry-1.docker.io/bitnamicharts/opensearch --set sysctlImage.enabled=true
+      helm upgrade --namespace {{ include "common.names.namespace" . }} {{ .Release.Name }} oci://ghcr.io/general-intelligence-systems/bitnami-charts/opensearch --set sysctlImage.enabled=true
 
     Note that this requires the ability to run privileged containers, which is likely not
     the case on many secure clusters. To cover this use case, you can also set some parameters
