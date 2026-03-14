@@ -1,0 +1,36 @@
+name: Sync and Rewrite Charts
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sync-and-rewrite:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout where-the-magic-happens
+        uses: actions/checkout@v4
+        with:
+          ref: where-the-magic-happens
+          fetch-depth: 0
+
+      - name: Delete existing bitnami folder
+        run: rm -rf bitnami
+
+      - name: Copy bitnami folder from main
+        run: git checkout main -- bitnami
+
+      - name: Replace registry and image prefix
+        run: |
+          find bitnami -name 'values.yaml' -exec sed -i \
+            -e 's|registry: docker.io|registry: ghcr.io|g' \
+            -e 's|repository: bitnami/|repository: general-intelligence-systems/|g' \
+            {} +
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && echo "No changes to commit" && exit 0
+          git commit -m "Sync charts from main and rewrite to ghcr.io/general-intelligence-systems"
+          git push origin where-the-magic-happens
