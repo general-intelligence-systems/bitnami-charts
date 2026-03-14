@@ -1,0 +1,235 @@
+name: Build Old Charts
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_sha:
+        description: 'Commit SHA on main branch to build charts from (oldest to newest)'
+        required: true
+        type: string
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # Job 1: Checkout at the given commit, detect charts, check what's missing
+  # ---------------------------------------------------------------------------
+  detect-charts:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.scan.outputs.matrix }}
+      has_charts: ${{ steps.scan.outputs.has_charts }}
+    steps:
+      - name: Checkout main at specified commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.commit_sha }}
+          fetch-depth: 1
+
+      - name: Install Helm
+        uses: azure/setup-helm@v4
+
+      - name: Log in to GHCR
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | helm registry login ghcr.io -u "${{ github.actor }}" --password-stdin
+
+      - name: Scan charts and detect unpublished versions
+        id: scan
+        run: |
+          charts=()
+          for chart_yaml in bitnami/*/Chart.yaml; do
+            [ -f "$chart_yaml" ] || continue
+            chart_dir="$(dirname "$chart_yaml")"
+            chart_name="$(basename "$chart_dir")"
+            chart_version="$(grep '^version:' "$chart_yaml" | awk '{print $2}')"
+
+            if [ -z "$chart_version" ]; then
+              echo "WARN $chart_name: could not parse version, skipping"
+              continue
+            fi
+
+            # Check if this exact version already exists in the OCI registry
+            if helm show chart "oci://ghcr.io/general-intelligence-systems/bitnami-charts/$chart_name" \
+                 --version "$chart_version" > /dev/null 2>&1; then
+              echo "SKIP $chart_name:$chart_version (already published)"
+            else
+              echo "NEW  $chart_name:$chart_version"
+              charts+=("$chart_name")
+            fi
+          done
+
+          if [ ${#charts[@]} -eq 0 ]; then
+            echo "No charts to build at this commit"
+            echo 'matrix={"chart":[]}' >> "$GITHUB_OUTPUT"
+            echo 'has_charts=false' >> "$GITHUB_OUTPUT"
+          else
+            json=$(printf '%s\n' "${charts[@]}" | jq -R . | jq -sc '{"chart": .}')
+            echo "matrix=$json" >> "$GITHUB_OUTPUT"
+            echo "has_charts=true" >> "$GITHUB_OUTPUT"
+            echo "Charts to build (${#charts[@]}): ${charts[*]}"
+          fi
+
+  # ---------------------------------------------------------------------------
+  # Job 2: Rewrite, build deps, package, push OCI, create GitHub Release
+  # ---------------------------------------------------------------------------
+  package:
+    runs-on: ubuntu-latest
+    needs: detect-charts
+    if: ${{ needs.detect-charts.outputs.has_charts == 'true' }}
+    permissions:
+      contents: write
+      packages: write
+    strategy:
+      matrix: ${{ fromJson(needs.detect-charts.outputs.matrix) }}
+      fail-fast: false
+      max-parallel: 10
+    steps:
+      - name: Checkout main at specified commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.commit_sha }}
+          fetch-depth: 1
+
+      - name: Install Helm
+        uses: azure/setup-helm@v4
+
+      - name: Log in to GHCR
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | helm registry login ghcr.io -u "${{ github.actor }}" --password-stdin
+
+      - name: Rewrite all bitnami references to GHCR
+        run: |
+          find bitnami -type f ! -path '*/.git/*' -exec sed -i \
+            -e 's|registry: docker.io|registry: ghcr.io|g' \
+            -e 's|repository: bitnami/|repository: general-intelligence-systems/|g' \
+            -e 's|docker.io/bitnami/|ghcr.io/general-intelligence-systems/|g' \
+            -e 's|oci://registry-1.docker.io/bitnamicharts|oci://ghcr.io/general-intelligence-systems/bitnami-charts|g' \
+            -e 's|https://bitnami.com|https://github.com/general-intelligence-systems/bitnami-charts|g' \
+            -e 's|https://github.com/bitnami/charts|https://github.com/general-intelligence-systems/bitnami-charts|g' \
+            {} +
+
+      - name: Build dependencies
+        run: |
+          chart_dir="bitnami/${{ matrix.chart }}"
+          if [ -f "$chart_dir/Chart.lock" ]; then
+            rm -f "$chart_dir/Chart.lock"
+          fi
+          helm dependency update "$chart_dir"
+
+      - name: Package chart
+        id: pkg
+        run: |
+          helm package "bitnami/${{ matrix.chart }}" -d .cr-release-packages
+          tgz=$(ls .cr-release-packages/*.tgz)
+          tgz_name=$(basename "$tgz")
+          chart_version="$(grep '^version:' "bitnami/${{ matrix.chart }}/Chart.yaml" | awk '{print $2}')"
+          tag="${{ matrix.chart }}-${chart_version}"
+          echo "tgz=$tgz" >> "$GITHUB_OUTPUT"
+          echo "tgz_name=$tgz_name" >> "$GITHUB_OUTPUT"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "version=$chart_version" >> "$GITHUB_OUTPUT"
+          echo "Packaged: $tgz (tag: $tag)"
+
+      - name: Push OCI package to GHCR
+        run: helm push "${{ steps.pkg.outputs.tgz }}" oci://ghcr.io/general-intelligence-systems/bitnami-charts
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          tag="${{ steps.pkg.outputs.tag }}"
+          tgz="${{ steps.pkg.outputs.tgz }}"
+
+          # Delete existing release/tag if it exists (idempotent)
+          gh release delete "$tag" --yes --cleanup-tag 2>/dev/null || true
+
+          # Create release with the .tgz attached
+          gh release create "$tag" "$tgz" \
+            --title "${{ matrix.chart }} ${{ steps.pkg.outputs.version }}" \
+            --notes "Helm chart \`${{ matrix.chart }}\` version \`${{ steps.pkg.outputs.version }}\` (built from commit \`${{ inputs.commit_sha }}\`)
+
+          Install via OCI:
+          \`\`\`
+          helm install ${{ matrix.chart }} oci://ghcr.io/general-intelligence-systems/bitnami-charts/${{ matrix.chart }} --version ${{ steps.pkg.outputs.version }}
+          \`\`\`
+
+          Install via Helm repo:
+          \`\`\`
+          helm repo add gis https://general-intelligence-systems.github.io/bitnami-charts
+          helm install ${{ matrix.chart }} gis/${{ matrix.chart }} --version ${{ steps.pkg.outputs.version }}
+          \`\`\`"
+
+  # ---------------------------------------------------------------------------
+  # Job 3: Update gh-pages index with newly created releases
+  # ---------------------------------------------------------------------------
+  update-index:
+    runs-on: ubuntu-latest
+    needs: package
+    if: ${{ always() && needs.package.result != 'cancelled' }}
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Checkout main at specified commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.commit_sha }}
+          path: source
+
+      - name: Install Helm
+        uses: azure/setup-helm@v4
+
+      - name: Build index from GitHub Releases
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p staging
+
+          for chart_yaml in source/bitnami/*/Chart.yaml; do
+            [ -f "$chart_yaml" ] || continue
+            chart_dir="$(dirname "$chart_yaml")"
+            chart_name="$(basename "$chart_dir")"
+            chart_version="$(grep '^version:' "$chart_yaml" | awk '{print $2}')"
+            tag="${chart_name}-${chart_version}"
+
+            # Skip if this version is already in the index
+            if [ -f gh-pages/index.yaml ]; then
+              if grep -q "${tag}.tgz" gh-pages/index.yaml 2>/dev/null; then
+                echo "INDEX SKIP $chart_name:$chart_version (already indexed)"
+                continue
+              fi
+            fi
+
+            # Try to download the .tgz from the GitHub Release
+            release_url="https://github.com/general-intelligence-systems/bitnami-charts/releases/download/${tag}"
+
+            echo "Downloading from release $tag ..."
+            if gh release download "$tag" --pattern "*.tgz" --dir "staging/${tag}" 2>/dev/null; then
+              helm repo index "staging/${tag}" \
+                --url "$release_url" \
+                --merge gh-pages/index.yaml
+              mv "staging/${tag}/index.yaml" gh-pages/index.yaml
+              echo "INDEXED $chart_name:$chart_version"
+            else
+              echo "SKIP $chart_name:$chart_version (no GitHub Release found)"
+            fi
+          done
+
+          # If no index.yaml exists yet, create an empty one
+          if [ ! -f gh-pages/index.yaml ]; then
+            printf 'apiVersion: v1\nentries: {}\ngenerated: "1970-01-01T00:00:00Z"\n' > gh-pages/index.yaml
+            echo "Created empty index.yaml"
+          fi
+
+          rm -rf staging
+
+      - name: Commit and push to gh-pages
+        working-directory: gh-pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.yaml
+          git diff --cached --quiet && echo "No changes to commit" && exit 0
+          git commit -m "Update Helm repo index (old charts from ${{ inputs.commit_sha }})"
+          git push origin gh-pages
