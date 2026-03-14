@@ -18,11 +18,14 @@ jobs:
       matrix: ${{ steps.scan.outputs.matrix }}
       has_charts: ${{ steps.scan.outputs.has_charts }}
     steps:
-      - name: Checkout main at specified commit
+      - name: Checkout main
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.commit_sha }}
-          fetch-depth: 1
+          ref: main
+          fetch-depth: 0
+
+      - name: Checkout specified commit
+        run: git checkout ${{ inputs.commit_sha }}
 
       - name: Install Helm
         uses: azure/setup-helm@v4
@@ -81,11 +84,14 @@ jobs:
       fail-fast: false
       max-parallel: 10
     steps:
-      - name: Checkout main at specified commit
+      - name: Checkout main
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.commit_sha }}
-          fetch-depth: 1
+          ref: main
+          fetch-depth: 0
+
+      - name: Checkout specified commit
+        run: git checkout ${{ inputs.commit_sha }}
 
       - name: Install Helm
         uses: azure/setup-helm@v4
