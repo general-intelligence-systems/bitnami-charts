@@ -29,11 +29,20 @@ jobs:
       - name: Copy bitnami folder from main
         run: git checkout origin/main -- bitnami
 
-      - name: Replace registry and image prefix
+      - name: Replace registry and image prefix in values.yaml
         run: |
           find bitnami -name 'values.yaml' -exec sed -i \
             -e 's|registry: docker.io|registry: ghcr.io|g' \
             -e 's|repository: bitnami/|repository: general-intelligence-systems/|g' \
+            {} +
+
+      - name: Replace references in Chart.yaml
+        run: |
+          find bitnami -name 'Chart.yaml' -exec sed -i \
+            -e 's|docker.io/bitnami/|ghcr.io/general-intelligence-systems/|g' \
+            -e 's|oci://registry-1.docker.io/bitnamicharts|oci://ghcr.io/general-intelligence-systems/bitnami-charts|g' \
+            -e 's|https://bitnami.com|https://github.com/general-intelligence-systems/bitnami-charts|g' \
+            -e 's|https://github.com/bitnami/charts|https://github.com/general-intelligence-systems/bitnami-charts|g' \
             {} +
 
       - name: Commit and push
