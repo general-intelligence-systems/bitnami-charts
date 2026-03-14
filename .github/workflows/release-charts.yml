@@ -142,6 +142,7 @@ jobs:
   update-index:
     runs-on: ubuntu-latest
     needs: package
+    if: ${{ always() && needs.package.result != 'cancelled' }}
     permissions:
       contents: write
     steps:
