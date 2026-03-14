@@ -175,67 +175,50 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: gh-pages
-          path: gh-pages
-
-      - name: Checkout main at specified commit
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ inputs.commit_sha }}
-          path: source
 
       - name: Install Helm
         uses: azure/setup-helm@v4
 
-      - name: Build index from GitHub Releases
+      - name: Sync index.yaml with all GitHub Releases
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p staging
 
-          for chart_yaml in source/bitnami/*/Chart.yaml; do
-            [ -f "$chart_yaml" ] || continue
-            chart_dir="$(dirname "$chart_yaml")"
-            chart_name="$(basename "$chart_dir")"
-            chart_version="$(grep '^version:' "$chart_yaml" | awk '{print $2}')"
-            tag="${chart_name}-${chart_version}"
+          # Ensure index.yaml exists
+          if [ ! -f index.yaml ]; then
+            printf 'apiVersion: v1\nentries: {}\ngenerated: "1970-01-01T00:00:00Z"\n' > index.yaml
+          fi
 
-            # Skip if this version is already in the index
-            if [ -f gh-pages/index.yaml ]; then
-              if grep -q "${tag}.tgz" gh-pages/index.yaml 2>/dev/null; then
-                echo "INDEX SKIP $chart_name:$chart_version (already indexed)"
-                continue
-              fi
+          # List all GitHub Releases and index any missing ones
+          gh release list --limit 1000 --json tagName -q '.[].tagName' | while read -r tag; do
+            # Skip if already in the index
+            if grep -q "${tag}.tgz" index.yaml 2>/dev/null; then
+              echo "SKIP $tag (already indexed)"
+              continue
             fi
 
-            # Try to download the .tgz from the GitHub Release
             release_url="https://github.com/general-intelligence-systems/bitnami-charts/releases/download/${tag}"
 
-            echo "Downloading from release $tag ..."
+            echo "Indexing $tag ..."
             if gh release download "$tag" --pattern "*.tgz" --dir "staging/${tag}" 2>/dev/null; then
               helm repo index "staging/${tag}" \
                 --url "$release_url" \
-                --merge gh-pages/index.yaml
-              mv "staging/${tag}/index.yaml" gh-pages/index.yaml
-              echo "INDEXED $chart_name:$chart_version"
+                --merge index.yaml
+              mv "staging/${tag}/index.yaml" index.yaml
+              echo "INDEXED $tag"
             else
-              echo "SKIP $chart_name:$chart_version (no GitHub Release found)"
+              echo "WARN $tag: no .tgz asset found"
             fi
           done
-
-          # If no index.yaml exists yet, create an empty one
-          if [ ! -f gh-pages/index.yaml ]; then
-            printf 'apiVersion: v1\nentries: {}\ngenerated: "1970-01-01T00:00:00Z"\n' > gh-pages/index.yaml
-            echo "Created empty index.yaml"
-          fi
 
           rm -rf staging
 
       - name: Commit and push to gh-pages
-        working-directory: gh-pages
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add index.yaml
           git diff --cached --quiet && echo "No changes to commit" && exit 0
-          git commit -m "Update Helm repo index (old charts from ${{ inputs.commit_sha }})"
+          git commit -m "Update Helm repo index"
           git push origin gh-pages
