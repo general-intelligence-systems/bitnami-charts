@@ -1,8 +1,28 @@
 # Changelog
 
-## 17.4.0 (2026-02-08)
+## 17.6.0 (2026-06-03)
 
-* [bitnami/thanos]: Adds compactor.deploymentAnnotation to thanos compactor options ([#36453](https://github.com/general-intelligence-systems/bitnami-charts/pull/36453))
+* [bitnami/thanos] per-shard extraFlags + shardLoopId in sharded storegateway ([#36543](https://github.com/general-intelligence-systems/bitnami-charts/pull/36543))
+
+## <small>17.5.2 (2026-05-25)</small>
+
+* [bitnami/thanos] Fix `containerPorts` in query deployment (#36533) ([b1f6087](https://github.com/general-intelligence-systems/bitnami-charts/commit/b1f6087ca0727b8764b3b5a79875f1286300ac17)), closes [#36533](https://github.com/general-intelligence-systems/bitnami-charts/issues/36533)
+
+## <small>17.5.1 (2026-05-19)</small>
+
+* [bitnami/thanos] Change hpa bucketweb component label to bucketweb (#36531) ([242f0b8](https://github.com/general-intelligence-systems/bitnami-charts/commit/242f0b8106575d3853509806fe23d4bad067846c)), closes [#36531](https://github.com/general-intelligence-systems/bitnami-charts/issues/36531)
+
+## 17.5.0 (2026-05-19)
+
+* [bitnami/thanos] Add Thanos httproute (#36529) ([73c0faa](https://github.com/general-intelligence-systems/bitnami-charts/commit/73c0faa841fdb2f6b604bb6662dafa29a074df18)), closes [#36529](https://github.com/general-intelligence-systems/bitnami-charts/issues/36529)
+
+## <small>17.4.1 (2026-04-17)</small>
+
+* [bitnami/thanos] Fix invalid YAML syntax on the query deployment template when `storegateway.useEndp ([a7fb7ee](https://github.com/general-intelligence-systems/bitnami-charts/commit/a7fb7ee67a1afdbf4de5b4afb48e7ffeeea1397c)), closes [#36485](https://github.com/general-intelligence-systems/bitnami-charts/issues/36485)
+
+## 17.4.0 (2026-02-09)
+
+* [bitnami/thanos]: Adds compactor.deploymentAnnotation to thanos compactor options (#36453) ([c21afd6](https://github.com/general-intelligence-systems/bitnami-charts/commit/c21afd6f1b2e696f925869962cf1353a054ac15f)), closes [#36453](https://github.com/general-intelligence-systems/bitnami-charts/issues/36453)
 
 ## <small>17.3.4 (2026-01-12)</small>
 
@@ -457,7 +477,7 @@
 
 ## <small>15.0.2 (2024-04-03)</small>
 
-* [bitnami/thanos]Fix: Make prometheus rules reliable with release name (#24655) ([a2a6eab](https://github.com/general-intelligence-systems/bitnami-charts/commit/a2a6eabda632d12ded2b2d0959c44aca2b73fab8)), closes [#24655](https://github.com/general-intelligence-systems/bitnami-charts/issues/24655) [#24651](https://github.com/general-intelligence-systems/bitnami-charts/issues/24651) [#24651](https://github.com/general-intelligence-systems/bitnami-charts/issues/24651)
+* [bitnami/thanos]Fix: Make prometheus rules reliable with release name (#24655) ([a2a6eab](https://github.com/general-intelligence-systems/bitnami-charts/commit/a2a6eabda632d12ded2b2d0959c44aca2b73fab8)), closes [#24655](https://github.com/general-intelligence-systems/bitnami-charts/issues/24655) [#24651](https://github.com/general-intelligence-systems/bitnami-charts/issues/24651)
 * Update resourcesPreset comments (#24467) ([92e3e8a](https://github.com/general-intelligence-systems/bitnami-charts/commit/92e3e8a507326d2a20a8f10ab3e7746a2ec5c554)), closes [#24467](https://github.com/general-intelligence-systems/bitnami-charts/issues/24467)
 
 ## <small>15.0.1 (2024-04-03)</small>
@@ -1543,7 +1563,7 @@
 
 ## <small>3.8.6 (2021-02-15)</small>
 
-* [bitnami/thanos] fix query TLS client in a modular way (#5437) (#5457) ([bbbf490](https://github.com/general-intelligence-systems/bitnami-charts/commit/bbbf490439643e885529c1c4f25aeb7c9c29dc93)), closes [#5437](https://github.com/general-intelligence-systems/bitnami-charts/issues/5437) [#5457](https://github.com/general-intelligence-systems/bitnami-charts/issues/5457) [#5437](https://github.com/general-intelligence-systems/bitnami-charts/issues/5437)
+* [bitnami/thanos] fix query TLS client in a modular way (#5437) (#5457) ([bbbf490](https://github.com/general-intelligence-systems/bitnami-charts/commit/bbbf490439643e885529c1c4f25aeb7c9c29dc93)), closes [#5437](https://github.com/general-intelligence-systems/bitnami-charts/issues/5437) [#5457](https://github.com/general-intelligence-systems/bitnami-charts/issues/5457)
 
 ## <small>3.8.5 (2021-02-12)</small>
 
@@ -1725,7 +1745,7 @@
 
 ## 2.2.0 (2020-08-12)
 
-* [bitnami/thanos] Add cache configuration blocks to Thanos store. Index and Bucket (#3387) ([2f2e1dd](https://github.com/general-intelligence-systems/bitnami-charts/commit/2f2e1ddcc594c1a6538c1820867862775e009740)), closes [#3387](https://github.com/general-intelligence-systems/bitnami-charts/issues/3387) [#3384](https://github.com/general-intelligence-systems/bitnami-charts/issues/3384) [#3384](https://github.com/general-intelligence-systems/bitnami-charts/issues/3384)
+* [bitnami/thanos] Add cache configuration blocks to Thanos store. Index and Bucket (#3387) ([2f2e1dd](https://github.com/general-intelligence-systems/bitnami-charts/commit/2f2e1ddcc594c1a6538c1820867862775e009740)), closes [#3387](https://github.com/general-intelligence-systems/bitnami-charts/issues/3387) [#3384](https://github.com/general-intelligence-systems/bitnami-charts/issues/3384)
 
 ## <small>2.1.1 (2020-08-07)</small>
 

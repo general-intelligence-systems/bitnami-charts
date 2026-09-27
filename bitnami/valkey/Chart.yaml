@@ -38,4 +38,4 @@ maintainers:
 name: valkey
 sources:
 - https://github.com/general-intelligence-systems/bitnami-charts/tree/main/bitnami/valkey
-version: 4.0.2
+version: 4.0.3
